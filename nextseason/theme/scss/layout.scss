@@ -1,0 +1,16 @@
+@import 'bourbon/bourbon';
+@import 'base/base';
+@import 'neat/neat';
+
+
+
+section {
+  @include outer-container;
+
+  font-family: 'Bitter', serif;
+
+  h1 {
+  	font-size: $base-font-size * 2;
+
+  }
+}
