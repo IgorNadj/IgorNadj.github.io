@@ -18,15 +18,15 @@
 					<thead>
 						<tr>
 							<th>Show</th>
-							<th>Episode</th>
-							<th>Date</th>
+							<th>Season</th>
+							<th>Returns</th>
 						</tr>
 					</thead>
 					<tbody infinite-scroll="loadMore()">
 						<tr ng-repeat="row in rows">
 							<td>{{row.show_name}}</td>
-							<td>{{row.episode_name}} ({{row.episode_number}})</td>
-							<td>{{row.episode_release_date_raw}}</td>
+							<td>{{row.season_number}}</td>
+							<td>{{row.release_date_raw}}</td>
 						</tr>
 					</tbody>
 				</table>
