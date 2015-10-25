@@ -4,7 +4,7 @@
 angular
 	.module('nextseason', [])
 	.service('api', ['$http', function($http){
-		var apiUrl = 'http://localhost:8080/api';
+		var apiUrl = 'http://nextseason-api.bigoaf.co.nz/api';
 		return function(action, params){
 			return $http({
 				url: apiUrl + '/' + action,
@@ -15,7 +15,7 @@ angular
 	.controller('upcoming', ['$scope', 'api', function($scope, api){
 		$scope.rows = [];
 		var start = 0;
-		var count = 20;
+		var count = 100;
 		var loading = false;
 		$scope.loadMore = function(){
 			if(loading) return;
