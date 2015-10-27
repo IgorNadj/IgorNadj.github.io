@@ -14,16 +14,27 @@
 			here be shows
 			<section ng-controller="upcoming">
 				<h2>Upcoming</h2>
+				<ul class="togglie">
+					<li>
+						<a href="#" ng-click="showPopular=true" ng-show="!showPopular">Popular shows</a>
+						<span ng-show="showPopular">Popular shows</span>
+					</li>
+					<li>
+						<a href="#" ng-click="showPopular=false" ng-show="showPopular">All shows</a>
+						<span ng-show="!showPopular">All shows</span>
+					</li>
+				</ul>
 				<table>
 					<thead>
 						<tr>
-							<th>Show</th>
+							<th colspan="2">Show</th>
 							<th>Season</th>
 							<th>Returns</th>
 						</tr>
 					</thead>
 					<tbody infinite-scroll="loadMore()">
-						<tr ng-repeat="row in rows">
+						<tr ng-repeat="row in getRows()">
+							<td><img class="show-thumb" ng-src="{{row.thumb_url}}" /></td>
 							<td>{{row.show_name}}</td>
 							<td>{{row.season_number}}</td>
 							<td>{{row.release_date_raw}}</td>

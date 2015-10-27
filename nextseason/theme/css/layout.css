@@ -200,3 +200,6 @@ section {
     display: table; }
   section h1 {
     font-size: 2em; }
+
+.show-thumb {
+  width: 92.5px; }

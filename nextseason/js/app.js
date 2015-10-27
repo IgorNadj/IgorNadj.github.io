@@ -4,7 +4,7 @@
 angular
 	.module('nextseason', [])
 	.service('api', ['$http', function($http){
-		var apiUrl = 'http://nextseason-api.bigoaf.co.nz/api';
+		var apiUrl = 'http://localhost/api';
 		return function(action, params){
 			return $http({
 				url: apiUrl + '/' + action,
@@ -13,20 +13,46 @@ angular
 		}
 	}])
 	.controller('upcoming', ['$scope', 'api', function($scope, api){
-		$scope.rows = [];
-		var start = 0;
-		var count = 100;
+		$scope.rows = {
+			all: [],
+			popular: []
+		};
+		$scope.getRows = function(){
+			if($scope.showPopular) return $scope.rows.popular;
+			return $scope.rows.all;
+		}
+		$scope.showPopular = true;
+		var GET_COUNT = 100;
+		var gotAll = {
+			all: false,
+			popular: false
+		};
 		var loading = false;
 		$scope.loadMore = function(){
+			var which = $scope.showPopular ? 'popular' : 'all';
+			if(gotAll[which]) return;
 			if(loading) return;
 			loading = true;
-			api('shows/returning', { start: start, count: count })
+			var url = 'shows/returning/'+which;
+			var start = $scope.rows[which].length;
+			api(url, { start: start, count: GET_COUNT })
 			.then(function(response){
-				start = start + count;
 				for(var i in response.data){
-					$scope.rows.push(response.data[i]);
+					var row = response.data[i];
+					row.thumb_url = null;
+					if(row.tmdb_poster_path){
+						row.thumb_url = 'https://image.tmdb.org/t/p/w185' + row.tmdb_poster_path;
+					}
+					row.tmdb_link = null;
+					if(row.tmdb_id){
+						row.tmdb_link = 'https://www.themoviedb.org/tv/' + row.tmdb_id;
+					}
+					$scope.rows[which].push(row);
 				};
-				console.log('heyo', response);
+				if(response.data.length == 0){
+					// we're at the end
+					gotAll[which] = true;
+				}
 				loading = false;
 			});
 		};
