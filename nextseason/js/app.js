@@ -79,7 +79,6 @@ angular
 			link: function(scope, element, attrs){
 				var imgEl = element.find('img').first()[0];
 				if(!imgEl){
-					console.log('no img element found');
 					return;
 				}
 				if(!window.colorThief) window.colorThief = new ColorThief();
@@ -88,14 +87,13 @@ angular
 					try{
 						var rgb = window.colorThief.getColor(imgEl);
 						var rgbObj = { r: rgb[0], g: rgb[1], b: rgb[2] };
-						var color1 = tinycolor(rgbObj).lighten();//.lighten(50).desaturate(10).toString();
-						var color2 = tinycolor(rgbObj).desaturate();//.lighten(30).desaturate(40).toString();
+						var color1 = tinycolor(rgbObj).lighten();
+						var color2 = tinycolor(rgbObj).desaturate();
 						if(color1.isDark()){
 							color1.lighten(50);
 							color2.lighten(40);	
 						} 
 						var gradStr = 'linear-gradient(-15deg, '+color1+', '+color2+')';
-						console.log(gradStr);
 						element.css('background', gradStr);
 					}catch(e){
 						console.log(e);
