@@ -17,7 +17,7 @@ article {
 
 	.content { 
 		@include outer-container;
-	
+
 		.show {
 			@include span-columns(4);
 
@@ -26,8 +26,8 @@ article {
 			// height: $poster-height;
 
 			@include media($large-screen-up) {
-				@include span-columns(3);
-				@include omega(4n);
+				@include span-columns(6);
+				@include omega(2n);
 			}
 
 			white-space: nowrap;

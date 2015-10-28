@@ -379,12 +379,12 @@ article {
           float: left;
           display: block;
           margin-right: 2.12766%;
-          width: 23.40426%; }
+          width: 48.93617%; }
           article .content .show:last-child {
             margin-right: 0; }
-          article .content .show:nth-child(4n) {
+          article .content .show:nth-child(2n) {
             margin-right: 0; }
-          article .content .show:nth-child(4n+1) {
+          article .content .show:nth-child(2n+1) {
             clear: left; } }
       article .content .show .poster, article .content .show .deets {
         display: inline-block;
