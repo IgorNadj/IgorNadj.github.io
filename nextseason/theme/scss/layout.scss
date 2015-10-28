@@ -1,18 +1,67 @@
 @import 'bourbon/bourbon';
-@import 'base/base';
+@import 'base/grid-settings';
 @import 'neat/neat';
+@import 'base/base';
 
+@import 'refills/button-group';
+@import 'refills/article-type-serif';
 
+$poster-width: 185px;
+$poster-height: 272px;
 
-section {
-  @include outer-container;
+article {
+	@include outer-container;
+	padding: $base-spacing;
 
-  font-family: 'Bitter', serif;
+	h3 { text-transform: uppercase; }
 
-  h1 {
-  	font-size: $base-font-size * 2;
+	.content { 
+		@include outer-container;
+	
+		.show {
+			@include span-columns(4);
 
-  }
+			margin: $base-spacing 0;
+			padding: $small-spacing;
+			// height: $poster-height;
+
+			@include media($large-screen-up) {
+				@include span-columns(3);
+				@include omega(4n);
+			}
+
+			white-space: nowrap;
+			.poster, .deets {
+				display: inline-block;
+				vertical-align: top;
+			}
+			.poster {
+				width: 30%;
+			}
+			.deets {
+				padding: $base-spacing;
+				white-space: normal;
+				width: 70%;
+			
+				.season-number, .when-returns {
+					font-size: 1.15em;
+					font-weight: bold;
+				}
+
+				.when-returns {
+					white-space: nowrap;
+				}
+			}
+
+		}
+	}
+
 }
 
-.show-thumb { width: 92.5px; }
+.show-thumb { width: $poster-width; }
+
+.loading-indicator {
+	padding: $base-spacing;
+	text-align: center;
+	clear: both;
+}
