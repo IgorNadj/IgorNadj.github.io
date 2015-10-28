@@ -75,23 +75,6 @@ angular
     	};
 	}])
 	.directive('imageBackgroundColor', function(){
-		var lighten = function(rgb, amt){
-			var r = [rgb[0], rgb[1], rgb[2]];
-			for(var i = 0; i < 3; i++){
-				r[i] = r[i] + amt;
-				if(r[i] > 255) r[i] = 255; 
-				if(r[i] < 0) r[i] = 0;
-			}
-			return r;
-		};
-		var withinRange = function(rgb, min, max){
-			var r = [rgb[0], rgb[1], rgb[2]];
-			for(var i = 0; i < 3; i++){
-				if(r[i] > max) r[i] = max; 
-				if(r[i] < min) r[i] = min;
-			}
-			return r;
-		};
 		return {
 			link: function(scope, element, attrs){
 				var imgEl = element.find('img').first()[0];
@@ -104,10 +87,14 @@ angular
 				imgEl.onload = function(){
 					try{
 						var rgb = window.colorThief.getColor(imgEl);
-						var rgb1 = withinRange(lighten(rgb, 50), 200, 250);
-						// var rgb2 = withinRange(lighten(rgb, -50), 100, 200);
-						var rgb2 = [255, 255, 255];
-						var gradStr = 'linear-gradient(-15deg, rgb('+rgb1+'), rgb('+rgb2+'))';
+						var rgbObj = { r: rgb[0], g: rgb[1], b: rgb[2] };
+						var color1 = tinycolor(rgbObj).lighten();//.lighten(50).desaturate(10).toString();
+						var color2 = tinycolor(rgbObj).desaturate();//.lighten(30).desaturate(40).toString();
+						if(color1.isDark()){
+							color1.lighten(50);
+							color2.lighten(40);	
+						} 
+						var gradStr = 'linear-gradient(-15deg, '+color1+', '+color2+')';
 						console.log(gradStr);
 						element.css('background', gradStr);
 					}catch(e){
