@@ -116,6 +116,10 @@ ol {
   list-style-type: none;
   margin: 0;
   padding: 0; }
+  article .about ul {
+    list-style-type: disc;
+    margin-bottom: 0.75em;
+    padding-left: 1.5em; }
 
 dl {
   margin-bottom: 0.75em; }
@@ -356,6 +360,12 @@ article {
     display: table; }
   article h3 {
     text-transform: uppercase; }
+  article .heyo-whats-this a {
+    padding: 0.75em 1em;
+    display: inline-block;
+    vertical-align: top; }
+  article.type-system-serif hr {
+    width: auto; }
   article .content {
     max-width: 1024px;
     margin-left: auto;
@@ -369,7 +379,7 @@ article {
       display: block;
       margin-right: 6.66667%;
       width: 100%;
-      margin: 1.5em 0;
+      margin: 30px 0;
       padding: 0.75em;
       white-space: nowrap; }
       article .content .show:last-child {

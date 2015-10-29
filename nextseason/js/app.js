@@ -4,7 +4,7 @@
 angular
 	.module('nextseason', [])
 	.service('api', ['$http', function($http){
-		var apiUrl = 'http://localhost/api'; // TODO: fix
+		var apiUrl = CUSTOM_API_URL ? CUSTOM_API_URL : '//nextseason-api.bigoaf.co.nz';
 		return function(action, params){
 			return $http({
 				url: apiUrl + '/' + action,
@@ -90,8 +90,8 @@ angular
 						var color1 = tinycolor(rgbObj).lighten();
 						var color2 = tinycolor(rgbObj).desaturate();
 						if(color1.isDark()){
-							color1.lighten(50);
-							color2.lighten(40);	
+							color1.lighten(70);
+							color2.lighten(60);	
 						} 
 						var gradStr = 'linear-gradient(-15deg, '+color1+', '+color2+')';
 						element.css('background', gradStr);
