@@ -35,7 +35,7 @@ article {
 		.show {
 			@include span-columns(4);
 
-			margin: $gutter 0;
+			margin: $small-spacing 0 0 0;
 			padding: $small-spacing;
 			// height: $poster-height;
 
