@@ -16,25 +16,48 @@ angular
 		var GET_COUNT = 100;
 		$scope.rows = {
 			all: [],
-			popular: []
+			popular: [],
+			faves: []
 		};
 		$scope.view = 'popular';
 		$scope.gotAll = {
 			all: false,
-			popular: false
+			popular: false,
+			faves: false
 		};
 		$scope.loading = {
 			all: false,
-			popular: false
+			popular: false,
+			faves: false
 		};
+		$scope.faveIdsLoaded = {};
+		$scope.faveIdToLoad = null;
 		$scope.loadMore = function(){
 			var view = $scope.view;
 			if($scope.gotAll[view]) return;
 			if($scope.loading[view]) return;
 			$scope.loading[view] = true;
-			var url = 'shows/returning/'+view;
-			var start = $scope.rows[view].length;
-			api(url, { start: start, count: GET_COUNT })
+			var url;
+			var params;
+			if(view == 'faves'){
+				if(!$scope.faveIdToLoad || $scope.faveIdsLoaded[$scope.faveIdToLoad]){
+					// already loaded this one
+					$scope.loading[view] = false;
+					return;
+				}
+				url = 'show';
+				params = { 
+					id: $scope.faveIdToLoad
+				};
+			}else{
+				url = 'shows/returning/'+view;
+				var start = $scope.rows[view].length;
+				params = { 
+					start: start, 
+					count: GET_COUNT 
+				};
+			}
+			api(url, params)
 			.then(function(response){
 				for(var i in response.data){
 					var row = response.data[i];
@@ -51,8 +74,18 @@ angular
 					$scope.rows[view].push(row);
 				};
 				if(response.data.length == 0){
-					// we're at the end
-					$scope.gotAll[view] = true;
+					if(view == 'faves'){
+						// faves, special case
+						console.log('todo: show some kinda message');
+					}else{
+						// we're at the end
+						$scope.gotAll[view] = true;
+					}
+				}else{
+					if(view == 'faves'){
+						// faves
+						$scope.faveIdsLoaded[params.id] = true;	
+					}
 				}
 				$scope.loading[view] = false;
 			});
@@ -61,6 +94,30 @@ angular
 			$scope.loadMore();
 		});
 		$scope.loadMore();
+	}])
+	.directive('autocompleteShows', ['api', function(api){
+		return function(scope, elm, attr){
+        	elm.autocomplete({
+        		source: function(request, response){
+        			api('shows/autocomplete', { q: request.term })
+        			.then(function(apiResponse){
+        				var r = [];
+        				for(var i in apiResponse.data){
+        					r.push({ value: apiResponse.data[i].id, label: apiResponse.data[i].name });
+        				}
+        				response(r);
+        			});
+        		},
+				select: function(event, ui){
+					scope.$apply(function(){
+						scope.view = 'faves';
+						scope.faveIdToLoad = ui.item.value;
+						scope.loadMore();
+					});
+					return false;
+				}
+        	});
+		}
 	}])
 	.directive('infiniteScroll', ['$document', function($document){
     	return function(scope, elm, attr){

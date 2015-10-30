@@ -5,9 +5,8 @@
 
 @import 'refills/button-group';
 @import 'refills/article-type-serif';
+@import 'refills/search-bar';
 
-$poster-width: 185px;
-$poster-height: 272px;
 
 article {
 	@include outer-container;
@@ -37,7 +36,6 @@ article {
 
 			margin: $small-spacing 0 0 0;
 			padding: $small-spacing;
-			// height: $poster-height;
 
 			@include media($large-screen-up) {
 				@include span-columns(6);
@@ -71,8 +69,6 @@ article {
 	}
 
 }
-
-.show-thumb { width: $poster-width; }
 
 .loading-indicator {
 	padding: $base-spacing;
