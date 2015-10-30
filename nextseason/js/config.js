@@ -1,1 +1,1 @@
-var API_URL = '//nextseason-api.bigoaf.co.nz';
+var API_URL = '//nextseason-api.bigoaf.co.nz/api';
