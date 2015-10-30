@@ -4,7 +4,7 @@
 angular
 	.module('nextseason', [])
 	.service('api', ['$http', function($http){
-		var apiUrl = CUSTOM_API_URL ? CUSTOM_API_URL : '//nextseason-api.bigoaf.co.nz';
+		var apiUrl = API_URL;
 		return function(action, params){
 			return $http({
 				url: apiUrl + '/' + action,
