@@ -122,6 +122,7 @@ angular
 					return false;
 				}
         	});
+        	elm.click(function(){ elm.select(); });
 		}
 	}])
 	.directive('infiniteScroll', ['$document', function($document){
