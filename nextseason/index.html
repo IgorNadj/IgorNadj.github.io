@@ -70,7 +70,7 @@
 				<hr/>
 				
 				<div class="content" infinite-scroll="loadMore()">
-					<div class='show' ng-repeat="row in rows[view]" image-background-color>
+					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
 						<div class="poster">
 							<img ng-src="{{row.thumb_url}}" />
 						</div>
