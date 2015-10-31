@@ -87,6 +87,9 @@
 							</div>
 						</div>
 					</div>
+					<div class="faves-info" ng-if="view == 'faves' && rows.faves.length == 0">
+						Search for your favourite shows and they will appear here
+					</div>
 					<div class="loading-indicator" ng-if="loading[view]">
 						<img src="theme/img/ajax-loader.gif" />
 					</div>
