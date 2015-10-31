@@ -181,7 +181,14 @@ angular
 						if(color1.isDark()){
 							color1.lighten(70);
 							color2.lighten(60);	
-						} 
+						}else{
+							color1.lighten();
+							color2.lighten();
+							color1.lighten();
+							color2.lighten();
+						}
+						color1.desaturate();
+						color2.desaturate();
 						var gradStr = 'linear-gradient(-15deg, '+color1+', '+color2+')';
 						element.css('background', gradStr);
 					}catch(e){
