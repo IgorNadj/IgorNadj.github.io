@@ -31,7 +31,7 @@ angular
 			faves: false
 		};
 		$scope.faveIdsLoaded = {};
-		$scope.faveIdToLoad = null;
+		$scope.faveIdsToLoad = null;
 		$scope.loadMore = function(){
 			var view = $scope.view;
 			if($scope.gotAll[view]) return;
@@ -40,14 +40,22 @@ angular
 			var url;
 			var params;
 			if(view == 'faves'){
-				if(!$scope.faveIdToLoad || $scope.faveIdsLoaded[$scope.faveIdToLoad]){
-					// already loaded this one
+				if(!$scope.faveIdsToLoad){
+					// missing ids
 					$scope.loading[view] = false;
+					return;
+				}
+				var id = $scope.faveIdsToLoad.pop();
+				if($scope.faveIdsToLoad.length == 0) $scope.faveIdsToLoad = null;
+				if($scope.faveIdsLoaded[id] !== undefined){
+					// already got this one, try next
+					$scope.loading[view] = false;
+					scope.loadMore();
 					return;
 				}
 				url = 'show';
 				params = { 
-					id: $scope.faveIdToLoad
+					id: id
 				};
 			}else{
 				url = 'shows/returning/'+view;
@@ -77,6 +85,7 @@ angular
 					if(view == 'faves'){
 						// faves, special case
 						console.log('todo: show some kinda message');
+						$scope.faveIdsLoaded[params.id] = false; // so we don't try loading again
 					}else{
 						// we're at the end
 						$scope.gotAll[view] = true;
@@ -85,15 +94,32 @@ angular
 					if(view == 'faves'){
 						// faves
 						$scope.faveIdsLoaded[params.id] = true;	
+						$scope.saveFaves();
 					}
 				}
 				$scope.loading[view] = false;
+				if(view == 'faves') $scope.loadMore(); // in case we have multiple ids, try next
 			});
 		};
 		$scope.$watch('view', function(){
 			$scope.loadMore();
 		});
-		$scope.loadMore();
+		$scope.saveFaves = function(){
+			var arr = [];
+			for(var i in $scope.faveIdsLoaded){
+				arr.push(i);
+			}
+			window.location.hash = arr.join(',');
+		};
+		$scope.init = function(){
+			if(window.location.hash){
+				$scope.view = 'faves';
+				var ids = window.location.hash.replace('#','').split(',');
+				$scope.faveIdsToLoad = ids;
+			}
+			$scope.loadMore();
+		};
+		$scope.init();
 	}])
 	.directive('autocompleteShows', ['api', function(api){
 		return function(scope, elm, attr){
@@ -115,7 +141,7 @@ angular
 				select: function(event, ui){
 					scope.$apply(function(){
 						scope.view = 'faves';
-						scope.faveIdToLoad = ui.item.value;
+						scope.faveIdsToLoad = [ui.item.value];
 						scope.loadMore();
 					});
 					elm.val(ui.item.label);

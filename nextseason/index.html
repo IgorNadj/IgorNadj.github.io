@@ -38,7 +38,7 @@
 							<span class="button-group-item">Faves</span>
 						</label>
 					</div>
-					<a href="#" ng-click="showAbout = !showAbout">About</a>
+					<a href="" ng-click="showAbout = !showAbout">About</a>
 				</div>
 
 				<div class="about" ng-if="showAbout">
@@ -67,9 +67,13 @@
 					</form>
 				</div>
 
+				<div class="faves-info" ng-if="view == 'faves'">
+					<em>Search for your favourite shows and they will appear here. Bookmark to save for later.</em>
+				</div>
+
 				<hr/>
 				
-				<div class="content" infinite-scroll="loadMore()">
+				<div class="content" infinite-scroll="loadMore()">					
 					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
 						<div class="poster">
 							<img ng-src="{{row.thumb_url}}" />
@@ -86,9 +90,6 @@
 								<span class="when-returns">{{row.release_date_raw}}</span>
 							</div>
 						</div>
-					</div>
-					<div class="faves-info" ng-if="view == 'faves' && rows.faves.length == 0">
-						Search for your favourite shows and they will appear here
 					</div>
 					<div class="loading-indicator" ng-if="loading[view]">
 						<img src="theme/img/ajax-loader.gif" />
