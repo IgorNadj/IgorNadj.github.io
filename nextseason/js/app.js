@@ -108,12 +108,17 @@ angular
         				response(r);
         			});
         		},
+				focus: function( event, ui ) {
+					elm.val(ui.item.label);
+					return false;
+				},
 				select: function(event, ui){
 					scope.$apply(function(){
 						scope.view = 'faves';
 						scope.faveIdToLoad = ui.item.value;
 						scope.loadMore();
 					});
+					elm.val(ui.item.label);
 					return false;
 				}
         	});
