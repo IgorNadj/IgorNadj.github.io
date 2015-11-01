@@ -8,10 +8,37 @@
 @import 'refills/search-bar';
 
 
+
+$icon-star: '\f511';
+$icon-star-full: '\f512';
+
+
+@mixin my-icon($icon) {
+	white-space: nowrap;
+	overflow: hidden;
+	visibility: hidden;
+	display: inline-block;
+	vertical-align: middle;
+	width: 1.2em;
+	margin-left: 0.2em;
+
+	&:before {
+		content: $icon;
+		font: normal 16px/1 'Genericons';
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		visibility: visible;
+		font-size: 1.2em;
+	}
+}
+
 article {
 	@include outer-container;
 	padding: $base-spacing;
-
+	@include media($large-screen-up){
+		padding-right: 100px; // move left slightly, smaller than max witdth for readability
+	}
+	
 	h3 { text-transform: uppercase; }
 
 	.heyo-whats-this {
@@ -65,6 +92,30 @@ article {
 				}
 			}
 
+			&:not(:hover) {
+				.this-my-jam {
+					display: none;
+				}
+			}
+
+			.is-this-my-jam {
+				display: inline-block;
+				a {
+					@include my-icon($icon-star);
+					opacity: 0.5;
+					color: #aaa;
+
+					&:hover {
+						opacity: 1;
+					}
+
+					&.remove {
+						@include my-icon($icon-star-full);
+						color: #E6A31E;
+						opacity: 1;
+					}
+				}
+			}
 		}
 	}
 

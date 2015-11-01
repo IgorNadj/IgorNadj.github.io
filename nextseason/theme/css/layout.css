@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   box-sizing: border-box; }
 
@@ -416,6 +417,9 @@ article {
     clear: both;
     content: "";
     display: table; }
+  @media screen and (min-width: 900px) {
+    article {
+      padding-right: 100px; } }
   article h3 {
     text-transform: uppercase; }
   article .heyo-whats-this a {
@@ -468,6 +472,46 @@ article {
           font-weight: bold; }
         article .content .show .deets .when-returns {
           white-space: nowrap; }
+      article .content .show:not(:hover) .this-my-jam {
+        display: none; }
+      article .content .show .is-this-my-jam {
+        display: inline-block; }
+        article .content .show .is-this-my-jam a {
+          white-space: nowrap;
+          overflow: hidden;
+          visibility: hidden;
+          display: inline-block;
+          vertical-align: middle;
+          width: 1.2em;
+          margin-left: 0.2em;
+          opacity: 0.5;
+          color: #aaa; }
+          article .content .show .is-this-my-jam a:before {
+            content: "";
+            font: normal 16px/1 "Genericons";
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            visibility: visible;
+            font-size: 1.2em; }
+          article .content .show .is-this-my-jam a:hover {
+            opacity: 1; }
+          article .content .show .is-this-my-jam a.remove {
+            white-space: nowrap;
+            overflow: hidden;
+            visibility: hidden;
+            display: inline-block;
+            vertical-align: middle;
+            width: 1.2em;
+            margin-left: 0.2em;
+            color: #E6A31E;
+            opacity: 1; }
+            article .content .show .is-this-my-jam a.remove:before {
+              content: "";
+              font: normal 16px/1 "Genericons";
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+              visibility: visible;
+              font-size: 1.2em; }
 
 .loading-indicator {
   padding: 1.5em;

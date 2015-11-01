@@ -6,7 +6,8 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"></script>
 		<script src="lib/color-thief.min.js"></script>
 		<script src="lib/tinycolor.min.js"></script>
-		<script src="lib/jquery-ui.min.js"></script>
+		<script src="lib/jquery/jquery-ui.min.js"></script>
+
 		<script src="js/config.js"></script>
 		<script src="js/app.js"></script>
 
@@ -14,8 +15,9 @@
 		<link href='http://fonts.googleapis.com/css?family=Lusitana:400,700' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 		<link href='http://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700italic,700,800,800italic' rel='stylesheet' type='text/css'>
-		<link href="lib/jquery-ui.min.css" rel="stylesheet"> 
-
+		<link href="lib/jquery/jquery-ui.min.css" rel="stylesheet"> 
+		<link href="lib/genericons/genericons.css" rel="stylesheet"> 
+		
 	</head>
 	<body>
 		<header></header>
@@ -35,7 +37,7 @@
 						</label>
 						<label>
 							<input type="radio" name="button-group" value="faves" ng-model="view">
-							<span class="button-group-item">Faves</span>
+							<span class="button-group-item">My Shows</span>
 						</label>
 					</div>
 					<a href="" ng-click="showAbout = !showAbout">About</a>
@@ -45,8 +47,6 @@
 					<hr/>
 					<h2>About</h2>
 					<p>Next Season is a little website which tells you when your favourite shows are returning.</p>
-					<p>It all came about when I noticed I kept looking up when my shows were coming back and, like any good engineer, 
-					I thought I'd spend hours upon hours building something to save myself a few minutes.</p>
 					<p>
 						<em>Project links:</em>
 						<ul class="default">
@@ -58,7 +58,7 @@
 
 				<hr/>
 
-				<div class="faves">
+				<div class="search">
 					<form class="search-bar" role="search">
 						<input type="search" name="autocomplete" placeholder="Search" autocomplete-shows />
 						<button type="submit">
@@ -67,13 +67,9 @@
 					</form>
 				</div>
 
-				<div class="faves-info" ng-if="view == 'faves'">
-					<em>Search for your favourite shows and they will appear here. Bookmark to save for later.</em>
-				</div>
-
 				<hr/>
 				
-				<div class="content" infinite-scroll="loadMore()">					
+				<div class="content" infinite-scroll="scrolledToBottom()">					
 					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
 						<div class="poster">
 							<img ng-src="{{row.thumb_url}}" />
@@ -82,6 +78,10 @@
 							<h2>
 								<a class="show-name" href="{{row.tmdb_link}}" ng-if="row.tmdb_link">{{row.show_name}}</a>
 								<span class="show-name" ng-if="!row.tmdb_link">{{row.show_name}}</span>
+								<div class="is-this-my-jam" ng-class="{ yes: faveShowIds[row.show_id], no: !faveShowIds[row.show_id] }">
+									<a href="" class="add" ng-click="addShowToFaves(row)" ng-if="!faveShowIds[row.show_id]">Add to my shows</a>
+									<a href="" class="remove" ng-click="removeShowFromFaves(row)" ng-if="faveShowIds[row.show_id]">Remove from my shows</a>
+								</div>
 							</h2>
 							<div class="info">
 								Season 

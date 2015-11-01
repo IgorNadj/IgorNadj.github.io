@@ -30,27 +30,29 @@ angular
 			popular: false,
 			faves: false
 		};
-		$scope.faveIdsLoaded = {};
-		$scope.faveIdsToLoad = null;
-		$scope.loadMore = function(){
-			var view = $scope.view;
+		$scope.faveShowIds = {};
+		$scope.faveShowIdsToLoad = [];
+		$scope.loadMore = function(view){
+			if(!view){
+				console.log('err: view required');
+				return;
+			}
 			if($scope.gotAll[view]) return;
 			if($scope.loading[view]) return;
 			$scope.loading[view] = true;
 			var url;
 			var params;
 			if(view == 'faves'){
-				if(!$scope.faveIdsToLoad){
-					// missing ids
+				if($scope.faveShowIdsToLoad.length === 0){
+					// nothing in the queue
 					$scope.loading[view] = false;
 					return;
 				}
-				var id = $scope.faveIdsToLoad.pop();
-				if($scope.faveIdsToLoad.length == 0) $scope.faveIdsToLoad = null;
-				if($scope.faveIdsLoaded[id] !== undefined){
+				var id = $scope.faveShowIdsToLoad.pop();
+				if($scope.faveShowIds[id] !== undefined){
 					// already got this one, try next
 					$scope.loading[view] = false;
-					scope.loadMore();
+					scope.loadMore('faves');
 					return;
 				}
 				url = 'show';
@@ -85,7 +87,7 @@ angular
 					if(view == 'faves'){
 						// faves, special case
 						console.log('todo: show some kinda message');
-						$scope.faveIdsLoaded[params.id] = false; // so we don't try loading again
+						$scope.faveShowIds[params.id] = false; // so we don't try loading again
 					}else{
 						// we're at the end
 						$scope.gotAll[view] = true;
@@ -93,31 +95,55 @@ angular
 				}else{
 					if(view == 'faves'){
 						// faves
-						$scope.faveIdsLoaded[params.id] = true;	
+						$scope.faveShowIds[params.id] = true;	
 						$scope.saveFaves();
 					}
 				}
 				$scope.loading[view] = false;
-				if(view == 'faves') $scope.loadMore(); // in case we have multiple ids, try next
+				if(view == 'faves') $scope.loadMore('faves'); // in case we have multiple ids, try next
 			});
 		};
 		$scope.$watch('view', function(){
-			$scope.loadMore();
+			$scope.loadMore($scope.view);
 		});
 		$scope.saveFaves = function(){
 			var arr = [];
-			for(var i in $scope.faveIdsLoaded){
+			for(var i in $scope.faveShowIds){
+				if($scope.faveShowIds[i] === false) continue;
 				arr.push(i);
 			}
 			window.location.hash = arr.join(',');
+		};
+		$scope.addShowToFaves = function(row){
+			$scope.faveShowIdsToLoad.push(row.show_id);
+			$scope.loadMore('faves');
+		};
+		$scope.removeShowFromFaves = function(row){
+			// remove from faves array
+			delete $scope.faveShowIds[row.show_id];
+			// remove rows from faves view
+			// we modify in place so iterate in revers
+			var i = $scope.rows.faves.length;
+			while(i--){
+				if($scope.rows.faves[i].show_id == row.show_id){
+					$scope.rows.faves.splice(i, 1);
+				}
+			}
+			// and save!
+			$scope.saveFaves();
+		};
+		$scope.scrolledToBottom = function(){
+			$scope.loadMore($scope.view);
 		};
 		$scope.init = function(){
 			if(window.location.hash){
 				$scope.view = 'faves';
 				var ids = window.location.hash.replace('#','').split(',');
-				$scope.faveIdsToLoad = ids;
+				for(var i in ids){
+					$scope.faveShowIdsToLoad.push(ids[i]);
+				}
 			}
-			$scope.loadMore();
+			$scope.loadMore($scope.view);
 		};
 		$scope.init();
 	}])
@@ -141,8 +167,8 @@ angular
 				select: function(event, ui){
 					scope.$apply(function(){
 						scope.view = 'faves';
-						scope.faveIdsToLoad = [ui.item.value];
-						scope.loadMore();
+						scope.faveShowIdsToLoad.push(ui.item.value);
+						scope.loadMore('faves');
 					});
 					elm.val(ui.item.label);
 					return false;
@@ -156,10 +182,13 @@ angular
         	var raw = elm[0];
         	$document.bind('scroll', function(){
         		var lowestPixelSeen = $('body').scrollTop() + window.innerHeight;
-        		var lastElementOffset = $(raw).children().last().offset().top;
-            	if(lowestPixelSeen > lastElementOffset){
-                	scope.$apply(attr.infiniteScroll);
-            	}
+        		var lastElement = $(raw).children().last();
+        		if(lastElement.size() > 0){
+        			var lastElementOffset = lastElement.offset().top;
+	            	if(lowestPixelSeen > lastElementOffset){
+	                	scope.$apply(attr.infiniteScroll);
+	            	}
+        		}
         	});
     	};
 	}])
