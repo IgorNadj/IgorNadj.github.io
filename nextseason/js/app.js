@@ -32,6 +32,8 @@ angular
 		};
 		$scope.faveShowIds = {};
 		$scope.faveShowIdsToLoad = [];
+		$scope.currentMessageRow = null;
+
 		$scope.loadMore = function(view){
 			if(!view){
 				console.log('err: view required');
@@ -104,6 +106,7 @@ angular
 			});
 		};
 		$scope.$watch('view', function(){
+			$scope.clearMessages();
 			$scope.loadMore($scope.view);
 		});
 		$scope.saveFaves = function(){
@@ -112,12 +115,25 @@ angular
 				if($scope.faveShowIds[i] === false) continue;
 				arr.push(i);
 			}
-			window.location.hash = arr.join(',');
+			if(arr.length === 0){
+				if(window.history && window.history.pushState){ 
+				    window.history.pushState('', '', window.location.pathname); // no jump to top 
+				}else{
+					window.location.hash = '';	
+				}
+			}else{
+				window.location.hash = arr.join(',');
+			}
+		};
+		$scope.goToFaves = function(){
+			$scope.view = 'faves';
 		};
 		$scope.addShowToFaves = function(row){
 			$scope.faveShowIdsToLoad.push(row.show_id);
 			$scope.loadMore('faves');
+			$scope.setRowMessage(row, { addedToFaves: true });
 		};
+
 		$scope.removeShowFromFaves = function(row){
 			// remove from faves array
 			delete $scope.faveShowIds[row.show_id];
@@ -129,8 +145,20 @@ angular
 					$scope.rows.faves.splice(i, 1);
 				}
 			}
-			// and save!
 			$scope.saveFaves();
+			$scope.setRowMessage(row, { removedFromFaves: true });
+		};
+		$scope.setRowMessage = function(row, messageObj){
+			$scope.clearMessages();
+			row.messages = messageObj;
+			$scope.currentMessageRow = row;
+		};
+		$scope.clearMessages = function(){
+			// remove old msg from whichever row it's on
+			if($scope.currentMessageRow){
+				$scope.currentMessageRow.messages = null; 
+			}
+			$scope.currentMessageRow = null;
 		};
 		$scope.scrolledToBottom = function(){
 			$scope.loadMore($scope.view);

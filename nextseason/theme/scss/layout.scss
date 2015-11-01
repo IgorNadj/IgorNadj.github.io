@@ -63,6 +63,7 @@ article {
 
 			margin: $small-spacing 0 0 0;
 			padding: $small-spacing;
+			outline: 1px solid rgba(0,0,0,0.1);
 
 			@include media($large-screen-up) {
 				@include span-columns(6);
@@ -115,6 +116,13 @@ article {
 						opacity: 1;
 					}
 				}
+			}
+
+			.messages {
+				padding: 0.5em 1em;
+				margin-bottom: 1em;
+				border: 3px solid rgb(82, 224, 56); // green
+				background: rgb(211, 243, 211); // light green
 			}
 		}
 	}

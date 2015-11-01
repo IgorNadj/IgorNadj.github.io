@@ -71,6 +71,10 @@
 				
 				<div class="content" infinite-scroll="scrolledToBottom()">					
 					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
+						<div class="messages" ng-if="row.messages">
+							<span ng-if="row.messages.addedToFaves">Added to <a href="" ng-click="goToFaves()">My Shows</a></span>
+							<span ng-if="row.messages.removedFromFaves">Removed from <a href="" ng-click="goToFaves()">My Shows</a></span>
+						</div>
 						<div class="poster">
 							<img ng-src="{{row.thumb_url}}" />
 						</div>

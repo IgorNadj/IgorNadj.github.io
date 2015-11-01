@@ -443,6 +443,7 @@ article {
       width: 100%;
       margin: 0.75em 0 0 0;
       padding: 0.75em;
+      outline: 1px solid rgba(0, 0, 0, 0.1);
       white-space: nowrap; }
       article .content .show:last-child {
         margin-right: 0; }
@@ -512,6 +513,11 @@ article {
               -moz-osx-font-smoothing: grayscale;
               visibility: visible;
               font-size: 1.2em; }
+      article .content .show .messages {
+        padding: 0.5em 1em;
+        margin-bottom: 1em;
+        border: 3px solid #52e038;
+        background: #d3f3d3; }
 
 .loading-indicator {
   padding: 1.5em;
