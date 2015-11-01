@@ -33,6 +33,7 @@ angular
 		$scope.faveShowIds = {};
 		$scope.faveShowIdsToLoad = [];
 		$scope.currentMessageRow = null;
+		$scope.globalMessages = null;
 
 		$scope.loadMore = function(view){
 			if(!view){
@@ -88,7 +89,7 @@ angular
 				if(response.data.length == 0){
 					if(view == 'faves'){
 						// faves, special case
-						console.log('todo: show some kinda message');
+						$scope.setGlobalMessage({ noUpcomingSeasons: true });
 						$scope.faveShowIds[params.id] = false; // so we don't try loading again
 					}else{
 						// we're at the end
@@ -153,12 +154,17 @@ angular
 			row.messages = messageObj;
 			$scope.currentMessageRow = row;
 		};
+		$scope.setGlobalMessage = function(messageObj){
+			$scope.clearMessages();
+			$scope.globalMessages = messageObj;
+		};
 		$scope.clearMessages = function(){
 			// remove old msg from whichever row it's on
 			if($scope.currentMessageRow){
 				$scope.currentMessageRow.messages = null; 
 			}
 			$scope.currentMessageRow = null;
+			$scope.globalMessages = null;
 		};
 		$scope.scrolledToBottom = function(){
 			$scope.loadMore($scope.view);
@@ -231,6 +237,7 @@ angular
 				imgEl.crossOrigin = 'Anonymous';
 				imgEl.onload = function(){
 					try{
+						// TODO: add 20% white - 0% white linear gradient image. better performance?
 						var rgb = window.colorThief.getColor(imgEl);
 						var rgbObj = { r: rgb[0], g: rgb[1], b: rgb[2] };
 						var color1 = tinycolor(rgbObj).lighten();

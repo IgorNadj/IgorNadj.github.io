@@ -67,9 +67,13 @@
 					</form>
 				</div>
 
+				<div class="global-messages" ng-if="globalMessages">
+					<span ng-if="globalMessages.noUpcomingSeasons">Sorry, I don't know of any upcoming seasons for that show.</span> 
+				</div>
+
 				<hr/>
 				
-				<div class="content" infinite-scroll="scrolledToBottom()">					
+				<div class="content" infinite-scroll="scrolledToBottom()">			
 					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
 						<div class="messages" ng-if="row.messages">
 							<span ng-if="row.messages.addedToFaves">Added to <a href="" ng-click="goToFaves()">My Shows</a></span>
