@@ -422,9 +422,9 @@ header .logo img {
   margin-top: 0.1em;
   margin-right: 0.4em; }
   header .logo img:hover {
-    background-color: #A9CFD6;
-    border-color: #A9CFD6;
-    box-shadow: 0 0 2px 2px #A9CFD6; }
+    background-color: #a9efff;
+    border-color: #a9efff;
+    box-shadow: 0 0 2px 2px #a9efff; }
   @media screen and (min-width: 600px) {
     header .logo img {
       width: 2.5em;
