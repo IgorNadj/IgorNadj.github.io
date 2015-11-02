@@ -67,7 +67,7 @@ angular
 				var start = $scope.rows[view].length;
 				params = { 
 					start: start, 
-					count: GET_COUNT 
+					limit: GET_COUNT 
 				};
 			}
 			api(url, params)
