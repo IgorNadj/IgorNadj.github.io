@@ -56,7 +56,7 @@ angular
 				if($scope.faveShowIds[id] !== undefined){
 					// already got this one, try next
 					$scope.loading[view] = false;
-					scope.loadMore('faves');
+					$scope.loadMore('faves');
 					return;
 				}
 				url = 'show';
@@ -204,6 +204,7 @@ angular
 						scope.view = 'faves';
 						scope.faveShowIdsToLoad.push(ui.item.value);
 						scope.faveShowNameToLoad = ui.item.label;
+						scope.clearMessages();
 						scope.loadMore('faves');
 					});
 					elm.val(ui.item.label);

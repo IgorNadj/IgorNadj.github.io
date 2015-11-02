@@ -12,6 +12,9 @@
 $icon-star: '\f511';
 $icon-star-full: '\f512';
 
+$green: rgb(210, 254, 203);
+$blue: #CBEFFE;
+
 
 @mixin my-icon($icon) {
 	white-space: nowrap;
@@ -53,6 +56,22 @@ article {
 
 	.about {
 		ul { @extend %default-ul; }
+	}
+
+	.search {
+		margin-top: $small-spacing;
+		margin-bottom: $base-spacing;
+	}
+
+	.global-messages {
+		padding: $small-spacing $base-spacing;
+		margin: $base-spacing 0;
+		font-style: italic;
+		background: $blue;
+		border: 1px solid rgba(0,0,0,0.2);
+		em {
+			font-weight: bold;
+		}
 	}
 
 	.content { 
@@ -130,9 +149,15 @@ article {
 			.messages {
 				padding: 0.5em 1em;
 				margin-bottom: 1em;
-				border: 3px solid rgb(82, 224, 56); // green
-				background: rgb(211, 243, 211); // light green
+				border: 1px solid rgba(0,0,0,0.2);
+				background: $green;
 			}
+		}
+
+		.no-faves-info {
+			color: #666;
+			text-align: center;
+			font-style: italic;
 		}
 	}
 

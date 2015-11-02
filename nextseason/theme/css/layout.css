@@ -428,6 +428,17 @@ article {
     vertical-align: top; }
   article.type-system-serif hr {
     width: auto; }
+  article .search {
+    margin-top: 0.75em;
+    margin-bottom: 1.5em; }
+  article .global-messages {
+    padding: 0.75em 1.5em;
+    margin: 1.5em 0;
+    font-style: italic;
+    background: #CBEFFE;
+    border: 1px solid rgba(0, 0, 0, 0.2); }
+    article .global-messages em {
+      font-weight: bold; }
   article .content {
     max-width: 1024px;
     margin-left: auto;
@@ -520,8 +531,12 @@ article {
       article .content .show .messages {
         padding: 0.5em 1em;
         margin-bottom: 1em;
-        border: 3px solid #52e038;
-        background: #d3f3d3; }
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        background: #d2fecb; }
+    article .content .no-faves-info {
+      color: #666;
+      text-align: center;
+      font-style: italic; }
 
 .loading-indicator {
   padding: 1.5em;

@@ -49,6 +49,7 @@
 					<hr/>
 					<h2>About</h2>
 					<p>Next Season is a little website which tells you when your favourite shows are returning.</p>
+					<p>Star some shows and then bookmark to save for later!</p>
 					<p>
 						<em>Project links:</em>
 						<ul class="default">
@@ -56,9 +57,10 @@
 							<li><a href="https://github.com/IgorNadj/IgorNadj.github.io/tree/master/nextseason">This website on github</a></li>
 						</ul>
 					</p>
+					<hr/>
 				</div>
 
-				<hr/>
+				
 
 				<div class="search">
 					<form class="search-bar" role="search">
@@ -73,7 +75,7 @@
 					<span ng-if="globalMessages.noUpcomingSeasons">Sorry, I don't know if <em>{{faveShowNameToLoad}}</em> is coming back :(</span> 
 				</div>
 
-				<hr/>
+				
 				
 				<div class="content" infinite-scroll="scrolledToBottom()">			
 					<div class='show' ng-repeat="row in rows[view] | orderBy : 'release_date_timestamp'" image-background-color>
@@ -100,6 +102,9 @@
 								<span class="when-returns">{{row.release_date_raw}}</span>
 							</div>
 						</div>
+					</div>
+					<div class="no-faves-info" ng-if="view == 'faves' && rows[view].length === 0">
+						You have no shows
 					</div>
 					<div class="loading-indicator" ng-if="loading[view]">
 						<img src="theme/img/ajax-loader.gif" />
