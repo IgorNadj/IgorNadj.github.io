@@ -252,8 +252,11 @@ angular
 					try{
 						var rgb = window.colorThief.getColor(imgEl);
 						var rgbObj = { r: rgb[0], g: rgb[1], b: rgb[2] };
-						var c = tinycolor(rgbObj).lighten();
-						if(c.isDark()) c.lighten(50);	
+						var c = tinycolor(rgbObj);
+						while(c.isDark()){
+							c.lighten();
+						}
+						c.lighten().desaturate();
 						element.css('background-color', c.toString());
 					}catch(e){
 						console.log(e);
