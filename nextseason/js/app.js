@@ -13,7 +13,7 @@ angular
 		}
 	}])
 	.controller('upcoming', ['$scope', 'api', function($scope, api){
-		var GET_COUNT = 100;
+		var GET_COUNT = 10;
 		$scope.rows = {
 			all: [],
 			popular: [],
