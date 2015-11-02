@@ -175,6 +175,11 @@ angular
 		$scope.scrolledToBottom = function(){
 			$scope.loadMore($scope.view);
 		};
+		$scope.searchFormSubmit = function(e){
+			var field = $(e.target).find('input');
+			field.focus().select();
+			if(field.hasClass('ui-autocomplete-input')) field.autocomplete('search');
+		};
 		$scope.init = function(){
 			if(window.location.hash){
 				$scope.view = 'faves';
