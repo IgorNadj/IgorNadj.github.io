@@ -408,6 +408,31 @@ form.search-bar {
       height: 12px;
       opacity: 0.7; }
 
+header h1, header .logo {
+  display: inline-block;
+  vertical-align: top; }
+
+header .logo img {
+  width: 2em;
+  height: 2em;
+  border-radius: 2em;
+  background-color: #E6E6E6;
+  border: 3px solid #E6E6E6;
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.5);
+  margin-top: 0.1em;
+  margin-right: 0.4em; }
+  header .logo img:hover {
+    background-color: #A9CFD6;
+    border-color: #A9CFD6;
+    box-shadow: 0 0 2px 2px #A9CFD6; }
+  @media screen and (min-width: 600px) {
+    header .logo img {
+      width: 2.5em;
+      height: 2.5em;
+      border-radius: 2.5em;
+      margin-top: 0.2em;
+      margin-right: 0.6em; } }
+
 article {
   max-width: 1024px;
   margin-left: auto;

@@ -14,6 +14,8 @@ $icon-star-full: '\f512';
 
 $green: rgb(210, 254, 203);
 $blue: #CBEFFE;
+$logo-bg: #E6E6E6;
+$logo-bg-hover: #A9CFD6;
 
 
 @mixin icon-replace-text($icon) {
@@ -37,6 +39,40 @@ $blue: #CBEFFE;
 	font: normal 16px/1 'Genericons';
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+header{
+	h1, .logo { display: inline-block; vertical-align: top; }
+	.logo { 
+		img {
+			width: 2em;
+			height: 2em;
+			border-radius: 2em;
+			background-color: $logo-bg;
+			border: 3px solid $logo-bg;
+			box-shadow: 0 0 1px 0 rgba(0,0,0,0.5);
+			margin-top: 0.1em; 
+			margin-right: 0.4em;
+
+
+			&:hover {
+				background-color: $logo-bg-hover;
+				border-color: $logo-bg-hover;
+				box-shadow: 0 0 2px 2px $logo-bg-hover; 
+			}
+
+			@media screen and (min-width: 600px) {
+				// same breakpoint as h1
+				width: 2.5em;
+				height: 2.5em;
+				border-radius: 2.5em;
+				margin-top: 0.2em; 
+				margin-right: 0.6em;
+
+			}
+		}
+	}
+
 }
 
 article {
