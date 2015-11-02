@@ -106,6 +106,10 @@ angular
 						// faves
 						$scope.faveShowIds[params.id] = true;	
 						$scope.saveFaves();
+						if($scope.view == 'faves'){
+							// probably searched for this one, show some feedback near search bar
+							$scope.setGlobalMessage({ loadedFave: true });
+						}
 					}
 				}
 				$scope.loading[view] = false;

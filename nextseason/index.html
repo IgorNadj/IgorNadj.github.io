@@ -80,7 +80,8 @@
 				</div>
 
 				<div class="global-messages" ng-if="globalMessages">
-					<span ng-if="globalMessages.noUpcomingSeasons">Sorry, I don't know when / if <em>{{faveShowNameToLoad}}</em> is coming back :(</span> 
+					<span ng-if="globalMessages.noUpcomingSeasons">Sorry, I don't know when / if <em>{{faveShowNameToLoad}}</em> is coming back :(</span>
+					<span ng-if="globalMessages.loadedFave">Added <em>{{faveShowNameToLoad}}</em></span> 
 				</div>
 
 				
