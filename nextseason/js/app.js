@@ -109,6 +109,11 @@ angular
 		};
 		$scope.$watch('view', function(){
 			$scope.clearMessages();
+			// clear other views 
+			// - data not needed really as loading is fast
+			// - and, switching back to a view is slow if lots of rows loaded
+			if($scope.view != 'popular') $scope.rows.popular = [];
+			if($scope.view != 'all') $scope.rows.all = [];
 			$scope.loadMore($scope.view);
 		});
 		$scope.saveFaves = function(){
