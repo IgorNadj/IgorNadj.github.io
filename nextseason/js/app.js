@@ -30,6 +30,11 @@ angular
 			popular: false,
 			faves: false
 		};
+		$scope.orderViewBy = {
+			all: null,     // server sort
+			popular: null, // server sort
+			faves: 'release_date_timestamp'
+		};
 		$scope.faveShowIds = {};
 		$scope.faveShowIdsToLoad = [];
 		$scope.faveShowNameToLoad = null;
