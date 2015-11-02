@@ -32,6 +32,7 @@ angular
 		};
 		$scope.faveShowIds = {};
 		$scope.faveShowIdsToLoad = [];
+		$scope.faveShowNameToLoad = null;
 		$scope.currentMessageRow = null;
 		$scope.globalMessages = null;
 
@@ -202,6 +203,7 @@ angular
 					scope.$apply(function(){
 						scope.view = 'faves';
 						scope.faveShowIdsToLoad.push(ui.item.value);
+						scope.faveShowNameToLoad = ui.item.label;
 						scope.loadMore('faves');
 					});
 					elm.val(ui.item.label);
