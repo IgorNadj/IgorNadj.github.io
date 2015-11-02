@@ -491,8 +491,7 @@ article {
           vertical-align: middle;
           width: 1.2em;
           margin-left: 0.2em;
-          opacity: 0.5;
-          color: #aaa; }
+          color: #666; }
           article .content .show .is-this-my-jam a:before {
             content: "";
             font: normal 16px/1 "Genericons";
@@ -501,7 +500,7 @@ article {
             visibility: visible;
             font-size: 1.2em; }
           article .content .show .is-this-my-jam a:hover {
-            opacity: 1; }
+            color: black; }
           article .content .show .is-this-my-jam a.remove {
             white-space: nowrap;
             overflow: hidden;
@@ -510,8 +509,7 @@ article {
             vertical-align: middle;
             width: 1.2em;
             margin-left: 0.2em;
-            color: #E6A31E;
-            opacity: 1; }
+            color: #E6A31E; }
             article .content .show .is-this-my-jam a.remove:before {
               content: "";
               font: normal 16px/1 "Genericons";

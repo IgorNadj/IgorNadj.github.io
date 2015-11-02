@@ -114,17 +114,15 @@ article {
 				
 				a {
 					@include my-icon($icon-star);
-					opacity: 0.5;
-					color: #aaa;
+					color: #666;
 
 					&:hover {
-						opacity: 1;
+						color: black;
 					}
 
 					&.remove {
 						@include my-icon($icon-star-full);
 						color: #E6A31E;
-						opacity: 1;
 					}
 				}
 			}
