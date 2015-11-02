@@ -64,6 +64,8 @@ article {
 			margin: $small-spacing 0 0 0;
 			padding: $small-spacing;
 			outline: 1px solid rgba(0,0,0,0.1);
+			background-image: url('../img/show-bg-gradient.png');
+			background-size: 100% 100%;
 
 			@include media($large-screen-up) {
 				@include span-columns(6);
@@ -79,7 +81,12 @@ article {
 				width: 30%;
 			}
 			.deets {
-				padding: $base-spacing;
+				padding: $small-spacing; 
+
+				@include media($medium-screen-up){
+					padding: $base-spacing;
+				}
+
 				white-space: normal;
 				width: 70%;
 			
@@ -101,6 +108,10 @@ article {
 
 			.is-this-my-jam {
 				display: inline-block;
+
+				// in case this is alone on a line, don't take up too much space
+				margin-bottom: -$small-spacing; 
+				
 				a {
 					@include my-icon($icon-star);
 					opacity: 0.5;

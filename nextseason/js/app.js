@@ -237,24 +237,11 @@ angular
 				imgEl.crossOrigin = 'Anonymous';
 				imgEl.onload = function(){
 					try{
-						// TODO: add 20% white - 0% white linear gradient image. better performance?
 						var rgb = window.colorThief.getColor(imgEl);
 						var rgbObj = { r: rgb[0], g: rgb[1], b: rgb[2] };
-						var color1 = tinycolor(rgbObj).lighten();
-						var color2 = tinycolor(rgbObj).desaturate();
-						if(color1.isDark()){
-							color1.lighten(70);
-							color2.lighten(60);	
-						}else{
-							color1.lighten();
-							color2.lighten();
-							color1.lighten();
-							color2.lighten();
-						}
-						color1.desaturate();
-						color2.desaturate();
-						var gradStr = 'linear-gradient(-15deg, '+color1+', '+color2+')';
-						element.css('background', gradStr);
+						var c = tinycolor(rgbObj).lighten();
+						if(c.isDark()) c.lighten(50);	
+						element.css('background-color', c.toString());
 					}catch(e){
 						console.log(e);
 					}
