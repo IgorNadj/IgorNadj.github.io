@@ -29,15 +29,15 @@
 				
 				<div class="heyo-whats-this">
 					<div class="button-group toggle-show-popular">
-						<label>
+						<label class="popular">
 							<input type="radio" name="button-group" value="popular" ng-model="view" >
 							<span class="button-group-item">Popular</span>
 						</label>
-						<label>
+						<label class="all">
 							<input type="radio" name="button-group" value="all" ng-model="view">
 							<span class="button-group-item">All</span>
 						</label>
-						<label>
+						<label class="faves">
 							<input type="radio" name="button-group" value="faves" ng-model="view">
 							<span class="button-group-item">My Shows</span>
 						</label>
@@ -104,7 +104,7 @@
 						</div>
 					</div>
 					<div class="no-faves-info" ng-if="view == 'faves' && rows[view].length === 0">
-						You have no shows
+						Star some shows and they will appear here
 					</div>
 					<div class="loading-indicator" ng-if="loading[view]">
 						<img src="theme/img/ajax-loader.gif" />

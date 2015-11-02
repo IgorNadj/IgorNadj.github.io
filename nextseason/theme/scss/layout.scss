@@ -16,7 +16,7 @@ $green: rgb(210, 254, 203);
 $blue: #CBEFFE;
 
 
-@mixin my-icon($icon) {
+@mixin icon-replace-text($icon) {
 	white-space: nowrap;
 	overflow: hidden;
 	visibility: hidden;
@@ -26,13 +26,17 @@ $blue: #CBEFFE;
 	margin-left: 0.2em;
 
 	&:before {
-		content: $icon;
-		font: normal 16px/1 'Genericons';
-		-webkit-font-smoothing: antialiased;
-		-moz-osx-font-smoothing: grayscale;
 		visibility: visible;
 		font-size: 1.2em;
+		@include icon($icon);
 	}
+}
+
+@mixin icon($icon) {
+	content: $icon;
+	font: normal 16px/1 'Genericons';
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 article {
@@ -50,6 +54,16 @@ article {
 			display: inline-block;
 			vertical-align: top;
 		}
+
+		.faves span {
+			&:after {
+				@include icon($icon-star);
+				margin-left: 0.3em;
+				display: inline-block;
+				vertical-align: middle;
+			}
+		}
+		
 	}
 
 	&.type-system-serif hr { width: auto; }
@@ -132,7 +146,7 @@ article {
 				margin-bottom: -$small-spacing; 
 				
 				a {
-					@include my-icon($icon-star);
+					@include icon-replace-text($icon-star);
 					color: #666;
 
 					&:hover {
@@ -140,7 +154,7 @@ article {
 					}
 
 					&.remove {
-						@include my-icon($icon-star-full);
+						@include icon-replace-text($icon-star-full);
 						color: #E6A31E;
 					}
 				}
