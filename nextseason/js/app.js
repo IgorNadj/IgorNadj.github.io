@@ -108,7 +108,9 @@ angular
 						$scope.saveFaves();
 						if($scope.view == 'faves'){
 							// probably searched for this one, show some feedback near search bar
-							$scope.setGlobalMessage({ loadedFave: true });
+							if($scope.faveShowNameToLoad){
+								$scope.setGlobalMessage({ loadedFave: true });	
+							}
 						}
 					}
 				}
