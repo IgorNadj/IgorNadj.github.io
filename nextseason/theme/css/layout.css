@@ -457,8 +457,9 @@ article {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin-left: 0.3em;
+    margin-bottom: -.5em;
     display: inline-block;
-    vertical-align: middle; }
+    vertical-align: top; }
   article.type-system-serif hr {
     width: auto; }
   article .search {

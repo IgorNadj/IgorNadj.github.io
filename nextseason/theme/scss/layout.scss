@@ -95,8 +95,9 @@ article {
 			&:after {
 				@include icon($icon-star);
 				margin-left: 0.3em;
+				margin-bottom: -.5em;
 				display: inline-block;
-				vertical-align: middle;
+				vertical-align: top;
 			}
 		}
 		
