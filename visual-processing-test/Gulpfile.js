@@ -1,11 +1,12 @@
 var fs = require('fs')
    ,gulp = require('gulp')
-   ,babel = require('gulp-babel');
+   ,babel = require('gulp-babel')
+   ,concat = require('gulp-concat');
  
 
 
 gulp.task('babel', function(){
-    gulp.src('./js/src/app.js')
+    gulp.src('./js/src/*.js')
         .pipe(
         	babel({
         		presets: ['react']
@@ -13,6 +14,7 @@ gulp.task('babel', function(){
 	        	console.log(err);
 	        })
         )
+        .pipe(concat('app.js'))
         .pipe(gulp.dest('./js/dist'));
 });
 

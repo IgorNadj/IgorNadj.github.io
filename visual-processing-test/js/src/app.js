@@ -9,6 +9,8 @@ class VisualProcessingTest extends React.Component {
 	    this.loadResources(props.res);
 
 	    this.onNext = this.onNext.bind(this); // ... so we can access this
+	    this.beforeTestDone = this.beforeTestDone.bind(this);
+	    this.afterTestDone = this.afterTestDone.bind(this);
 	}
 
 	getImageTypes(){
@@ -23,9 +25,11 @@ class VisualProcessingTest extends React.Component {
 		var self = this;
 		if(!res) throw 'Param res required, containing image resource object';
 
-		var images = {};
+		// 1. pick subset
+		var res = this.getRandomImageSubset(res, 10);
 
-		// TODO: pick a subset at random
+		// 2. load
+		var images = {};
 
 		var loadQueue = [];
 		var types = this.getImageTypes();
@@ -76,6 +80,33 @@ class VisualProcessingTest extends React.Component {
 		noiseImage.src = 'res/images/noise.jpg';
 	}
 
+	getRandomImageSubset(res, num){
+		var subset = {
+			templates: {
+				people: [],
+				animals: []
+			},
+			stimuli: {
+				people: [],
+				animals: []
+			}
+		};
+		var categories = this.getImageCategories();
+		for(var i in categories){
+			var category = categories[i];
+			var randomIndices = Util.getUniqueRandomNumbers(num, 0, res.templates[category].length - 1);
+			for(var j in randomIndices){
+				var randomIndex = randomIndices[j];
+				subset.templates[category].push(res.templates[category][randomIndex]);
+				subset.stimuli[category].push(res.stimuli[category][randomIndex]);
+			}
+		}
+
+		console.log('subset', subset);
+
+		return subset;
+	}
+
 	onNext(){
 		console.log('on next');
 		if(this.state.myState == 'pre-before-test'){
@@ -84,7 +115,8 @@ class VisualProcessingTest extends React.Component {
 	}
 
 	beforeTestDone(answers){
-
+		console.log('beforeTestDone');
+		this.setState({ myState: 'pre-prime' });
 	}
 
 	afterTestDone(answers){
@@ -97,10 +129,13 @@ class VisualProcessingTest extends React.Component {
     		inner = <Loading />;	
     	}
     	if(this.state.myState == 'pre-before-test'){
-    		inner = <Instructions myState="pre-before-test" onNext={this.onNext} />
+    		inner = <Instructions myState="pre-before-test" start={this.onNext} />
     	}
     	if(this.state.myState == 'before-test'){
     		inner = <Test images={this.state.images} done={this.beforeTestDone} />
+    	}
+    	if(this.state.myState == 'pre-prime'){
+    		inner = <Instructions myState="pre-prime" start={this.onNext} />
     	}
     	// prime
     	if(this.state.myState == 'after-test'){
@@ -131,7 +166,19 @@ class Instructions extends React.Component {
 					<li>Priming</li>
 					<li>Test</li>
 				</ol>
-				<p>You will be given instructions before each part.</p>
+				<p>
+					This first test involves quick flashes of 10 black and white images, and asks you to answer a simple question. 
+				</p>
+				<p>
+					Prepare to pay attention and click start.
+				</p>
+			</div>
+		}
+		if(this.props.myState == 'pre-prime'){
+			content = <div>
+				<p>First test done.</p>
+				<p>Next you will see the colour images, which were used to generate the black and white images.</p>
+				<p>Watch carefully, they will appear briefly.</p>
 			</div>
 		}
 		return <div style={{ padding: '3em' }}>
@@ -139,7 +186,7 @@ class Instructions extends React.Component {
 			<div>
 				{ content }
 			</div>
-			<a href="#" onClick={this.props.onNext} >Start</a>
+			<a href="#" onClick={this.props.start} >Start</a>
 		</div> 
 	}
 }
@@ -159,6 +206,7 @@ class Test extends React.Component {
 	}
 
 	next(answeredYes){
+		// TODO: randomise order
 		console.log('next', answeredYes);
 
 		var curIndex = this.state.currentImageIndex;
@@ -168,7 +216,11 @@ class Test extends React.Component {
 		this.setState({ answers: answers });
 
 		var nextIndex = curIndex + 1;
-		if(nextIndex >= this.state.images.length){
+
+		var numImages = Object.keys(this.state.images).length;
+
+		// console.log('Test::next', this, this.state.images.length, nextIndex);
+		if(nextIndex >= numImages){
 			// finished
 			console.log('test done, shipping answers');
 			this.props.done(this.state.answers);
@@ -177,9 +229,9 @@ class Test extends React.Component {
 			console.log('going to next stimuli', nextIndex);
 			this.setState({ currentImageIndex: nextIndex });
 		}
-
-
 	}
+
+
 
 	getImageAtIndex(index){
 		var image = null;
@@ -193,7 +245,7 @@ class Test extends React.Component {
 			count++;
 		}
 		return image;
-	}	
+	}
 
 	render(){
 		var image = this.getImageAtIndex(this.state.currentImageIndex);
@@ -298,6 +350,29 @@ class TestPhoto extends React.Component {
 	}
 }
 
+class Util {
+
+	static getUniqueRandomNumbers(num, min, max){
+		var arr = []
+		while(arr.length < num){
+			var rand = Util.getRandomInt(min, max);
+			var found = false;
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i] == rand){
+					found = true;
+					break
+				}
+			}
+			if(!found) arr.push(rand);
+		}
+		return arr;
+	}
+
+	static getRandomInt(min, max){
+		return Math.floor(Math.random() * (max - min + 1)) + min;
+	}
+
+}
 
 
 

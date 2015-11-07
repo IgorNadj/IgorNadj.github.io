@@ -6,7 +6,8 @@
   "dependencies": {
     "babel-preset-react": "^6.1.2",
     "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.0"
+    "gulp-babel": "^6.1.0",
+    "gulp-concat": "^2.6.0"
   },
   "devDependencies": {},
   "scripts": {
