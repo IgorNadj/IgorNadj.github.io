@@ -6,14 +6,14 @@ var fs = require('fs')
 
 
 gulp.task('babel', function(){
-    gulp.src('./js/src/*.js')
-        .pipe(
-        	babel({
-        		presets: ['react']
-        	}).on('error', function(err){
-	        	console.log(err);
-	        })
-        )
+	var react = babel({
+		presets: ['react']
+	}).on('error', function(err){
+    	console.log(err);
+    });
+
+    gulp.src(['./js/src/use-strict.js', './js/src/classes/*.js', './js/src/main.js'])
+        .pipe(react)
         .pipe(concat('app.js'))
         .pipe(gulp.dest('./js/dist'));
 });
@@ -35,7 +35,7 @@ gulp.task('images', function(){
 			}
 		}
 	}
-	fs.writeFile('res/images.js', 'var VPT_IMAGES = '+JSON.stringify(images), function(err){
+	fs.writeFile('./js/dist/images.js', 'var VPT_IMAGES = '+JSON.stringify(images), function(err){
 		if(err) throw err;
 	}); 
 });
