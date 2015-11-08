@@ -1,3 +1,6 @@
 [submodule "nextseason"]
 	path = nextseason
 	url = https://github.com/IgorNadj/nextseason-web.git
+[submodule "visual-processing-test"]
+	path = visual-processing-test
+	url = https://github.com/IgorNadj/visual-processing-test.git
