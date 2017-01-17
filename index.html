@@ -12,33 +12,6 @@
 			ga('send', 'pageview');
 		</script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script>
-			$(function(){
-				$.get('https://api.github.com/repositories/44790825/contents/', function(data){
-					for(var i in data){
-						var entry = data[i];
-						var isProject = entry.type == 'file' && 
-						                entry.git_url.startsWith('https://api.github.com/repos/IgorNadj') && 
-						                !entry.git_url.startsWith('https://api.github.com/repos/IgorNadj/IgorNadj.github.io');
-
-						if(isProject){
-							console.log(entry);
-							var rest = entry.git_url.substring('https://api.github.com/repos/IgorNadj/'.length);
-							var projectPath = entry.name;
-							var projectRepoName = rest.substring(0, rest.indexOf('/'));
-							var projectGitUrl = '//github.com/IgorNadj/' + projectRepoName;
-							var template = '<li>'+
-							                 '<a href="'+projectPath+'">'+projectPath+'</a>'+
-							                 '<a class="source" href="'+entry.html_url+'">'+
-							                   '<img src="theme/GitHub-Mark-32px.png"/>'+
-							                 '</a>'+
-							               '</li>';
-							$('#projects').append(template);
-						}
-					}
-				});
-			});
-		</script>
 		<style>
 			#projects .source { margin-left: 0.4em; }
 			#projects img { width: 12px; height: 12px; vertical-align: middle; }
@@ -51,7 +24,14 @@
 
 		<section>
 			<h2>Projects</h2>
-			<ul id="projects"></ul>
+			<ul id="projects">
+				<li>
+					<a href="http://bigoaf.co.nz/visual-processing-test">visual processing test</a>
+				 	<a class="source" href="https://github.com/IgorNadj/visual-processing-test">
+						<img src="theme/GitHub-Mark-32px.png"/>
+					</a>
+				</li>
+			</ul>
 		</section>
 
 		<section>
