@@ -1,8 +1,20 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<title>Personal website of Igor Nadj</title> 
 		<link rel="icon" href="/theme/favicon.ico">
 
+		<!-- JQuery -->		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+		<!-- Bootstrap -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+
+		<!-- GA -->
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -11,43 +23,85 @@
 			ga('create', 'UA-70256146-1', 'auto');
 			ga('send', 'pageview');
 		</script>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+		<!-- Gravatar -->
+		<script src="/lib/gravatar.js"></script>
+		<script>
+			$(function() {
+				$('.gravatar').gravatar('igor.nadj@gmail.com');
+			});
+		</script>
+
 		<style>
+			section { margin: 4em 0 1em 0; }
+			.me, .about {
+				text-align: center;
+			}
+
+			h2 {
+				border-bottom: 3px dotted pink;
+			}
+
 			#projects .source { margin-left: 0.4em; }
 			#projects img { width: 12px; height: 12px; vertical-align: middle; }
+			.gravatar .thumbnailUrl { border-radius: 500px; box-shadow: 0 0 5px black; }
 		</style>
 	</head>
 	<body>
-		<section>
-			Personal website of Igor Nadj.
-		</section>
+		<div class="main container">
 
-		<section>
-			<h2>Projects</h2>
-			<ul id="projects">
-				<li>
-					<a href="/nextseason">nextseason</a>
-				 	<a class="source" href="https://github.com/IgorNadj/nextseason-web">
-						<img src="theme/GitHub-Mark-32px.png"/>
-					</a>
-				</li>
-				<li>
-					<a href="/visual-processing-test">visual processing test</a>
-				 	<a class="source" href="https://github.com/IgorNadj/visual-processing-test">
-						<img src="theme/GitHub-Mark-32px.png"/>
-					</a>
-				</li>
-			</ul>
-		</section>
+			<section class="row about">
+				<div class="col">
+					<h1>Personal Website</h1>
+				</div>
+			</section>
 
-		<section>
-			<h2>Links</h2>
-			<ul>
-				<li><a href="https://github.com/IgorNadj/">Github</a></li>
-				<li><a href="https://twitter.com/igor_nnz">Twitter</a></li>
-				<li><a href="https://www.instagram.com/igor.nadj/">Instagram</a></li>
-			</ul>
-		</section>
+			<section class="row me">
+				<div class="col">
+					<div class="gravatar">
+						<img class="thumbnailUrl"></img>
+						<div class="displayName"></div>
+						<div class="email"></div>
+						<div class="aboutMe"></div>
+						<div class="currentLocation"></div>
+					</div>
+				</div>
+			</section>
+
+			<section class="row info">
+				<div class="col">
+					<h2>History</h2>
+					<a href="http://stackoverflow.com/story/igor.nadj">Developer Story</a>
+				</div>
+				<div class="col">
+					<h2>Personal Projects</h2>
+					<ul id="projects">
+						<li>
+							<a href="/nextseason">nextseason</a>
+						 	<a class="source" href="https://github.com/IgorNadj/nextseason-web">
+								<img src="theme/GitHub-Mark-32px.png"/>
+							</a>
+						</li>
+						<li>
+							<a href="/visual-processing-test">visual processing test</a>
+						 	<a class="source" href="https://github.com/IgorNadj/visual-processing-test">
+								<img src="theme/GitHub-Mark-32px.png"/>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="col">
+					<h2>Links</h2>
+					<ul>
+						<li><a href="https://github.com/IgorNadj/">Github</a></li>
+						<li><a href="https://twitter.com/igor_nnz">Twitter</a></li>
+						<li><a href="https://www.instagram.com/igor.nadj/">Instagram</a></li>
+					</ul>
+				</div>
+			</section>
+
+		</div>
+		
 	</body>
 </html>
 
