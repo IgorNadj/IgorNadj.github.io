@@ -42,8 +42,10 @@
 				border-bottom: 3px dotted pink;
 			}
 
-			#projects .source { margin-left: 0.4em; }
-			#projects img { width: 12px; height: 12px; vertical-align: middle; }
+			.info-item { margin-bottom: 1em; }
+
+			.github-icon { width: 12px; height: 12px; vertical-align: middle; }
+
 			.gravatar .thumbnailUrl { border-radius: 500px; box-shadow: 0 0 5px black; }
 		</style>
 	</head>
@@ -69,28 +71,30 @@
 			</section>
 
 			<section class="row info">
-				<div class="col">
+				<div class="col-sm-4 info-item">
 					<h2>History</h2>
-					<a href="http://stackoverflow.com/story/igor.nadj">Developer Story</a>
+					<ul>
+						<li><a href="http://stackoverflow.com/story/igor.nadj">Developer Story</a></li>
+					</ul>
 				</div>
-				<div class="col">
+				<div class="col-sm-4 info-item">
 					<h2>Personal Projects</h2>
-					<ul id="projects">
+					<ul>
 						<li>
 							<a href="/nextseason">nextseason</a>
 						 	<a class="source" href="https://github.com/IgorNadj/nextseason-web">
-								<img src="theme/GitHub-Mark-32px.png"/>
+								<img class="github-icon" src="theme/GitHub-Mark-32px.png"/>
 							</a>
 						</li>
 						<li>
 							<a href="/visual-processing-test">visual processing test</a>
 						 	<a class="source" href="https://github.com/IgorNadj/visual-processing-test">
-								<img src="theme/GitHub-Mark-32px.png"/>
+								<img class="github-icon" src="theme/GitHub-Mark-32px.png"/>
 							</a>
 						</li>
 					</ul>
 				</div>
-				<div class="col">
+				<div class="col-sm-4 info-item">
 					<h2>Links</h2>
 					<ul>
 						<li><a href="https://github.com/IgorNadj/">Github</a></li>
