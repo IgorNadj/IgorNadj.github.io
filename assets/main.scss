@@ -45,3 +45,12 @@ h1, h2, h3, h4, h5, h6 {
 	border-top-color: $dark-blue;
 	border-top-width: 5px;
 }
+
+.icon {
+	width: 20px;
+	display: inline-block;
+	svg {
+		width: 16px;
+		height: 16px;
+	}
+}
