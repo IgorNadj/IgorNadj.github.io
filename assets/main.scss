@@ -10,8 +10,11 @@ $dark-blue: #64afd8;
 $gray: #666;
 
 
+html, body {
+	height: 100%;
+}
 body {
-	background: $light-blue;
+	background: linear-gradient(0deg, $light-blue, $dark-blue);
 }
 header, main {
 	background: white;
