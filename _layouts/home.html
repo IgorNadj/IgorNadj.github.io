@@ -1,0 +1,32 @@
+---
+layout: default
+---
+
+
+<!-- JQuery -->   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- Gravatar -->
+<script src="/assets/gravatar.js"></script>
+<script>
+  $(function() {
+    $('.gravatar').gravatar('igor.nadj@gmail.com');
+  });
+</script>
+
+<div class="home">
+
+    <section class="me">
+        <div class="gravatar">
+          <img class="thumbnailUrl"></img>
+          <div class="displayName"></div>
+          <div class="currentLocation"></div>
+          <div class="email"></div>
+        </div>
+    </section>
+
+    <section class="main">
+      {{ content }}
+    </section>
+  
+</div>

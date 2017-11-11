@@ -1,0 +1,47 @@
+---
+# CSS overrides
+---
+
+@import "minima";
+
+
+$light-blue: #eaf4f9;
+$dark-blue: #64afd8;
+$gray: #666;
+
+
+body {
+	background: $light-blue;
+}
+header, main {
+	background: white;
+}
+
+blockquote {
+	letter-spacing: normal;
+	color: $gray;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 1.5em;
+}
+
+.home {
+	section { 
+	  margin: 4em 0 1em 0;
+	  text-align: center; 
+	}
+	.displayName { 
+		font-weight: bold; 
+		margin-top: 1em; 
+	}
+	.thumbnailUrl { 
+		border-radius: 500px; 
+		box-shadow: 0 0 5px black; 
+	}
+}
+
+.site-header {
+	border-top-color: $dark-blue;
+	border-top-width: 5px;
+}
