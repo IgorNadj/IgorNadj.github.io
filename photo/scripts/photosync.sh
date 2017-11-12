@@ -9,5 +9,7 @@
 #
 # Run: call this script
 
+find ~/Pictures/igornadj.io.photos -name '.DS_Store' -delete
+
 s3cmd sync --recursive --delete-removed ~/Pictures/igornadj.io.photos s3://igornadj-photos/
 

@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<main>
+	{{ content }}
+	<div id="photos"></div>
+</main>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.12.min.js"></script>
+<script>
+(function(){
+	const bucketPublicUrl = 'https://s3-ap-southeast-2.amazonaws.com/igornadj-photos/';
+	const container = document.getElementById('photos');
+
+	AWS.config.region = 'ap-southeast-2';
+	const bucket = new AWS.S3({
+	    params: {
+	        Bucket: 'igornadj-photos'
+	    }
+	});
+	bucket.makeUnauthenticatedRequest(
+		'listObjects', 
+		{}, 
+		function (err, data) {
+	        if (err) {
+	            console.error(err);
+	        } else {
+	            let photoUrls = [];
+	            data.Contents.forEach(function (obj) {
+	                let photoUrl = bucketPublicUrl + obj.Key;
+	                photoUrls.push(photoUrl);
+	            });
+	            addPhotos(photoUrls);
+	        }
+	    }
+	);
+	/*
+	 * @param photos - array of string
+	 */
+	function addPhotos(photoUrls) {
+		for (let photoUrl of photoUrls) {
+			const wrapper = document.createElement('div');
+			const image = document.createElement('img');
+			image.src = photoUrl;
+			wrapper.appendChild(image);
+			container.appendChild(wrapper);
+		}
+	}
+})();
+</script>
