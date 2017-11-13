@@ -4,6 +4,14 @@ layout: default
 
 <main>
 	{{ content }}
-	<div id="photos"></div>
+
+	<div id="photos">
+		{% for post in site.posts %}
+			<a href="{{post.url}}">
+				<p class="title">{{post.title}}</p>
+				<p class="date">{{ post.date | date: "%b %d, %Y" }}</p>
+			</a>
+		{% endfor %}
+	</div>
 </main>
 
