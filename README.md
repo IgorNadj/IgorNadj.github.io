@@ -3,10 +3,10 @@
 # Install
 
 - install ruby
-- gem install jekyll
-- gem install jekyll bundler
-- bundle install
+- `gem install jekyll`
+- `gem install jekyll bundler`
+- `bundle install`
 
-# Run locally
+# Run jekyll locally
 
 - jekyll serve

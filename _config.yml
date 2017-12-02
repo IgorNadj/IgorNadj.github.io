@@ -36,6 +36,10 @@ plugins:
 exclude:
   - dev/
   - photo/
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - CNAME
 
 
 
