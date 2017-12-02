@@ -7,6 +7,7 @@
 
 $light-blue: #eaf4f9;
 $dark-blue: #64afd8;
+$dark-red: #ca4e4e;
 $gray: #666;
 
 
@@ -43,6 +44,15 @@ h1, h2, h3, h4, h5, h6 {
 		height: 80px; 
 		border-radius: 500px; 
 		box-shadow: 0 0 5px black; 
+	}
+}
+
+.typography {
+	a {
+		text-decoration: underline;
+		&:hover {
+			color: $dark-red;
+		}
 	}
 }
 
