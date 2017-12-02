@@ -34,8 +34,6 @@ plugins:
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
 exclude:
-  - dev/
-  - photo/
   - README.md
   - Gemfile
   - Gemfile.lock
