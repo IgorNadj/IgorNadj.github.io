@@ -2,17 +2,17 @@
 layout: home
 ---
 
-# Web Developer 🔨
+# About me
 
-Full-stack web developer, focused on building applications that both delight the end user and the team who work on it. My main interests are in development, automated testing, continuous integration, user experience, mentoring and growing.
+Full-stack software engineer, focused on building applications that both delight the end user and the team who work on it. My main interests are in product development, automated testing, continuous integration, user experience, mentoring and growing.
 
 
-## Work history 🎩 
+## Work history
 
 See my [Developer Story](https://stackoverflow.com/story/igor.nadj).
 
 
-## Personal projects 🍷 
+## Personal projects
 
 A few of my latest personal projects:
 - **Next season** [![github](/assets/github.png)](https://github.com/IgorNadj/nextseason-web) – a little web application I wrote to tell you [when your favourite shows are coming back](/dev/nextseason-web). 
