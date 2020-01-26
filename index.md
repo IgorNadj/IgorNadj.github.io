@@ -4,7 +4,7 @@ layout: home
 
 # About me
 
-Full-stack software engineer, focused on building applications that both delight the end user and the team who work on it. My main interests are in product development, automated testing, continuous integration, user experience, mentoring and growing.
+Full-stack software engineer, focused on building applications that delight both the customers and the developers who work on it. My main interests are in development, solution architecture, automated testing, CI/CD, mentoring and growing.
 
 
 ## Work history
