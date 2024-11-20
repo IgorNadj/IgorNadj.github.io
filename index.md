@@ -2,18 +2,19 @@
 layout: home
 ---
 
-# About me
+# Bio
+Hey! I'm a Software Engineer based in Melbourne, Australia.
 
-Full-stack software engineer, focused on building applications that delight both the customers and the developers who work on it. My main interests are in development, solution architecture, automated testing, CI/CD, mentoring and growing.
-
-
-## Work history
-
-See my [Developer Story](https://stackoverflow.com/story/igor.nadj).
+You've probably landed here looking for my online presence - I'm not active on social media, so read on below for more about me and what I'm into.
 
 
-## Personal projects
+# Work
+I'm a senior full-stack software engineer, and I'm passionate about building applications that delight both the end users and the developers who work on them. My main interests are in software development, solution architecture, automation, DevEx, clean code and pragmatic solutions.
 
-A few of my latest personal projects:
-- **Next season** [![github](/assets/github.png)](https://github.com/IgorNadj/nextseason-web) – a little web application I wrote to tell you [when your favourite shows are coming back](/dev/nextseason-web). 
-- **Visual processing test** [![github](/assets/github.png)](https://github.com/IgorNadj/visual-processing-test) – online [test of top-down-visual processing ability](/dev/visual-processing-test).
+
+# Links
+- My photography [Instagram](https://www.instagram.com/igornadj_photo/)
+- [GitHub](https://github.com/IgorNadj)
+
+
+
