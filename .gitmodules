@@ -1,6 +1,0 @@
-[submodule "dev/nextseason-web"]
-	path = dev/nextseason-web
-	url = https://github.com/IgorNadj/nextseason-web.git
-[submodule "dev/visual-processing-test"]
-	path = dev/visual-processing-test
-	url = https://github.com/IgorNadj/visual-processing-test.git
