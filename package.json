@@ -1,5 +1,5 @@
 {
-  "name": "lonely-luminosity",
+  "name": "igornadj.io",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.0.5",
+    "@astrojs/rss": "^4.0.11",
+    "@astrojs/sitemap": "^3.2.1",
     "astro": "^5.1.5"
   }
 }
