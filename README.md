@@ -1,12 +1,13 @@
-# igornadj.github.io
+igornadj.io
 
-# Install
+
+# Local Install
 
 - install ruby
 - `gem install jekyll`
 - `gem install jekyll bundler`
 - `bundle install`
 
-# Run jekyll locally
+## Run
 
 - jekyll serve
