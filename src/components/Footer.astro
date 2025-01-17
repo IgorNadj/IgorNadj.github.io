@@ -1,0 +1,21 @@
+---
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} Igor Nadj 
+	<smaller>All rights reserved</smaller>
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: white;
+		color: rgb(var(--gray));
+		text-align: center;
+
+		smaller {
+			display: block;
+			font-size: 0.8em;
+		}
+	}
+</style>
