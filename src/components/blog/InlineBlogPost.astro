@@ -1,0 +1,36 @@
+---
+import { render } from 'astro:content';
+import BlogPostMeta from './BlogPostMeta.astro';
+
+interface Props {
+  post: any;
+}
+
+const { post } = Astro.props;
+
+const { Content } = await render(post);
+---
+
+
+<article class="inline-blog-post">
+  <div class="inline-blog-post-header">
+    <h1>
+      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+    </h1>
+
+    <BlogPostMeta pubDate={post.data.pubDate} />
+  </div>
+
+  <div class="inline-blog-post-content">
+    <Content />
+  </div>
+
+  <div class="inline-blog-post-footer">
+    <div class="inline-blog-post-tags">
+      {post.data.tags && post.data.tags.map(tag => (
+        <span class="inline-blog-post-tag" key={tag}>#{tag}</span>
+      ))}
+    </div>
+  </div>
+  <hr class="inline-blog-post-divider" />
+</article>

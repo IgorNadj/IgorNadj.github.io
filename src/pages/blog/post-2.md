@@ -1,7 +1,7 @@
 ---
-title: 'My First Blog Post'
+title: 'My Second Blog Post'
 layout: ../../layouts/BlogPostLayout.astro
-pubDate: 2022-07-01
+pubDate: 2023-07-01
 description: 'This is the first post of my new Astro blog.'
 image:
     url: 'https://docs.astro.build/assets/rose.webp'

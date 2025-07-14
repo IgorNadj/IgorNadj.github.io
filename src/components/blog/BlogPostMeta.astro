@@ -1,0 +1,14 @@
+---
+import {format, formatISO} from 'date-fns';
+import { getEntry, render } from 'astro:content';
+
+interface Props {
+  pubDate: any;
+}
+
+const { pubDate } = Astro.props;
+---
+
+<div class="blog-post-meta">
+  {format(pubDate, 'd MMMM yyyy')}
+</div>

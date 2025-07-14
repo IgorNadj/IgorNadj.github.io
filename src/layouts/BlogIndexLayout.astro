@@ -1,0 +1,32 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+import '../styles/blog-index.css';
+import {getCollection} from "astro:content";
+import InlineBlogPost from "../components/blog/InlineBlogPost.astro";
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={frontmatter.title} description={frontmatter.description} />
+  </head>
+	<body>
+		<Header />
+		<main>
+			<slot />
+      <div class="blog-index">
+        {(await getCollection('blog')).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()).map((post) => {
+          return (
+            <InlineBlogPost key={post.id} post={post} />
+          );
+        })}
+      </div>
+		</main>
+		<Footer />
+	</body>
+</html>
