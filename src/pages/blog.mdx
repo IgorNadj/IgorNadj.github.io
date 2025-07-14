@@ -1,0 +1,19 @@
+---
+layout: ../layouts/Home.astro
+title: 'Blog'
+---
+
+import { getCollection } from 'astro:content';
+import { format } from 'date-fns';
+
+## Blog
+
+<ul>
+  {(await getCollection('blog')).map((post) =>
+    <li>
+      <em>{format(post.data.pubDate, 'd LLL yyyy')} </em>
+      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+    </li>
+  )}
+</ul>
+
