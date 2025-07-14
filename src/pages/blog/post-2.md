@@ -1,23 +1,15 @@
 ---
-title: 'My Second Blog Post'
+title: 'Visual Processing Test'
 layout: ../../layouts/BlogPostLayout.astro
-pubDate: 2023-07-01
-description: 'This is the first post of my new Astro blog.'
-image:
-    url: 'https://docs.astro.build/assets/rose.webp'
-    alt: 'The Astro logo on a dark background with a pink glow.'
+pubDate: 2018-11-04
+description: 'Blog post about the Visual Processing Test project.'
 ---
 
-Welcome to my _new blog_ about learning Astro! Here, I will share my learning journey as I build a new website.
+Visual Processing Test is an online study which tests the user's top-down visual processing ability.
 
-## What I've accomplished
-
-1. **Installing Astro**: First, I created a new Astro project and set up my online accounts.
-
-2. **Making Pages**: I then learned how to make pages by creating new `.astro` files and placing them in the `src/pages/` folder.
-
-3. **Making Blog Posts**: This is my first blog post! I now have Astro pages and Markdown posts!
-
-## What's next
-
-I will finish the Astro tutorial, and then keep adding more posts. Watch this space for more to come.
+<div class="project-card">
+  <a href="http://visual-processing-test.dev.igornadj.io" target="_blank">
+    <img src="/project-previews/visual-processing-test.jpg" />
+    <span class="project-card-view-project">View project →</span>
+  </a>
+</div>

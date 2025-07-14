@@ -17,11 +17,9 @@
 .inline-blog-post-header a {
   text-decoration: none;
   border-bottom: none;
-  color: inherit;
 }
 
 .inline-blog-post-header a:hover {
-  color: var(--accent);
   text-decoration: none;
   border-bottom: 1px solid var(--accent-dark);
 }
@@ -30,6 +28,17 @@
   font-style: italic;
   color: #666;
   font-size: 0.9rem;
+}
+
+.inline-blog-post-content {
+  max-height: 400px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.inline-blog-post-content-fader {
+  height: 100%;
+  outline: 5px solid red;
+  mask-image: linear-gradient(to bottom, black 80%, transparent);
 }
 
 .inline-blog-post-footer {
@@ -51,9 +60,8 @@
   border-radius: 4px;
 }
 
-.inline-blog-post-read-more a {
-  text-decoration: none;
-  font-weight: bold;
+.inline-blog-post-read-more {
+  margin: 1rem 0;
 }
 
 .inline-blog-post-divider {
@@ -61,4 +69,8 @@
   border: 0;
   height: 1px;
   background-color: #eee;
+}
+
+.inline-blog-post-content .project-card a {
+  max-width: 20rem;
 }

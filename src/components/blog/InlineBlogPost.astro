@@ -1,6 +1,7 @@
 ---
 import { render } from 'astro:content';
 import BlogPostMeta from './BlogPostMeta.astro';
+import Button from '../Button.astro';
 
 interface Props {
   post: any;
@@ -21,8 +22,14 @@ const { Content } = await render(post);
     <BlogPostMeta pubDate={post.data.pubDate} />
   </div>
 
-  <div class="inline-blog-post-content">
-    <Content />
+  <div class="inline-blog-post-content-fader">
+    <div class="inline-blog-post-content">
+      <Content />
+    </div>
+  </div>
+
+  <div class="inline-blog-post-read-more">
+    <Button href={`/blog/${post.id}`}>Read more &rarr;</Button>
   </div>
 
   <div class="inline-blog-post-footer">

@@ -16,6 +16,7 @@ const { frontmatter } = Astro.props;
 		<Header />
 		<main>
       <h1>{frontmatter.title}</h1>
+      <a href="/blog">Blog</a> / {frontmatter.title}
       <BlogPostMeta pubDate={frontmatter.pubDate} />
 			<slot />
 		</main>

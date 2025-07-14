@@ -162,3 +162,30 @@ em2 { font-weight: 400 }
 
 
 
+.project-card {
+  display: block;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+  outline: 0;
+}
+
+.project-card a {
+  display: block;
+  max-width: 30rem;
+  /* margin: auto; */
+  text-align: center;
+
+  padding: 1rem;
+
+  background: white;
+  box-shadow: 0 0 3px 0 grey;
+
+  &:hover {
+    box-shadow: 0 0 3px 0 #1fc0e3;
+  }
+}
+
+.project-card-view-project {
+  display: block;
+  margin-top: 1rem;
+}

@@ -1,0 +1,39 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  className?: string;
+}
+
+const { href, type = 'button', className = '' } = Astro.props;
+---
+
+{href ? (
+  <a href={href} class={`button ${className}`}>
+    <slot />
+  </a>
+) : (
+  <button type={type} class={`button ${className}`}>
+    <slot />
+  </button>
+)}
+
+<style>
+  .button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background-color: #f0f0f0;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .button:hover {
+    background-color: var(--accent);
+    color: white;
+  }
+</style>
