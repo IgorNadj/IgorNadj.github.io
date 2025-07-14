@@ -16,7 +16,7 @@ const { Content } = await render(post);
 <article class="inline-blog-post">
   <div class="inline-blog-post-header">
     <h1>
-      <a href={`/blog/${post.id}`}>{post.data.title}</a>
+      {post.data.title}
     </h1>
 
     <BlogPostMeta pubDate={post.data.pubDate} />

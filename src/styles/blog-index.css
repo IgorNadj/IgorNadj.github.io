@@ -14,20 +14,9 @@
   font-size: 1.3rem;
 }
 
-.inline-blog-post-header a {
-  text-decoration: none;
-  border-bottom: none;
-}
-
-.inline-blog-post-header a:hover {
-  text-decoration: none;
-  border-bottom: 1px solid var(--accent-dark);
-}
-
-.inline-blog-post-meta {
-  font-style: italic;
+.blog-post-meta {
   color: #666;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 }
 
 .inline-blog-post-content {
@@ -62,6 +51,7 @@
 
 .inline-blog-post-read-more {
   margin: 1rem 0;
+  text-align: center;
 }
 
 .inline-blog-post-divider {
@@ -77,4 +67,8 @@
 
 .inline-blog-post-content .project-card a {
   pointer-events: none;
+}
+
+.inline-blog-post-content .project-card-view-project {
+  display: none;
 }
