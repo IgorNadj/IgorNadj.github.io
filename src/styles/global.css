@@ -163,29 +163,38 @@ em2 { font-weight: 400 }
 
 
 .project-card {
-  display: block;
+  display: inline-block;
   margin-top: 3rem;
   margin-bottom: 4rem;
   outline: 0;
-}
-
-.project-card a {
-  display: block;
-  max-width: 30rem;
-  /* margin: auto; */
   text-align: center;
 
-  padding: 1rem;
+  img {
+    max-width: 30rem;
+    display: block;
+  }
 
-  background: white;
-  box-shadow: 0 0 3px 0 grey;
+  a {
+    display: block;
+    padding: 1rem;
 
-  &:hover {
+    background: white;
     box-shadow: 0 0 3px 0 #1fc0e3;
+
+    &:hover {
+
+      .project-card-view-project {
+        background: var(--accent);
+        color: white;
+      }
+    }
   }
 }
 
 .project-card-view-project {
-  display: block;
+  display: inline-block;
   margin-top: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
 }

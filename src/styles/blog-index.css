@@ -71,6 +71,10 @@
   background-color: #eee;
 }
 
-.inline-blog-post-content .project-card a {
+.inline-blog-post-content img {
   max-width: 20rem;
+}
+
+.inline-blog-post-content .project-card a {
+  pointer-events: none;
 }
