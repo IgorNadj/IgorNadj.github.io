@@ -163,29 +163,28 @@ em2 { font-weight: 400 }
 
 
 .project-card {
-  display: inline-block;
+  display: block;
   outline: 0;
   text-align: center;
+  margin: 2rem 0;
 
   img {
     max-width: 30rem;
-    display: block;
     border: 1px solid #ddd;
+    margin-bottom: 1.5em;
   }
 
   a {
-    display: block;
     padding: 1rem;
     border-bottom: none;
 
     background: white;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
 
     &:hover {
-
-      .project-card-view-project {
-        background: var(--accent);
-        color: white;
-      }
+      background: var(--accent);
+      color: white;
     }
   }
 }

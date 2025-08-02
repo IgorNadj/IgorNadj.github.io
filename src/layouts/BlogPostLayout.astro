@@ -15,10 +15,13 @@ const { frontmatter } = Astro.props;
 	<body>
 		<Header />
 		<main>
-      <h1>{frontmatter.title}</h1>
-      <a href="/blog">Blog</a> / {frontmatter.title}
+      <a href="/blog">← Index</a>
       <BlogPostMeta pubDate={frontmatter.pubDate} />
-			<slot />
+
+      <hr class="inline-blog-post-divider" />
+
+      <h2>{frontmatter.title}</h2>
+      <slot />
 		</main>
 		<Footer />
 	</body>
