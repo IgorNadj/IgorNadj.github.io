@@ -5,18 +5,19 @@
   margin-bottom: 2rem;
 }
 
-.inline-blog-post-header {
-  /*margin-bottom: 1rem;*/
-}
-
 .inline-blog-post-header h1 {
   margin-bottom: 0.5rem;
   font-size: 1.3rem;
+
+  a {
+    border-bottom: 0;
+  }
+}
+
+.inline-blog-post-header {
 }
 
 .blog-post-meta {
-  /*color: #666;*/
-  /*font-size: 0.8rem;*/
   margin-top: 1rem;
 }
 
@@ -32,36 +33,12 @@
 }
 
 .inline-blog-post-footer {
-  display: flex;
-  justify-content: space-between;
   margin-top: 1.5rem;
   font-size: 0.9rem;
 }
 
-.inline-blog-post-tags {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.inline-blog-post-tag {
-  color: #555;
-  background-color: #f0f0f0;
-  padding: 0.2rem 0.5rem;
-  border-radius: 4px;
-}
-
 .inline-blog-post-read-more {
   margin: 1rem 0;
-
-  .button-contents {
-    display: inline-flex;
-    align-items: center;
-
-    svg {
-      margin-left: 0.5rem;
-      margin-bottom: -0.1rem;
-    }
-  }
 }
 
 .inline-blog-post-divider {

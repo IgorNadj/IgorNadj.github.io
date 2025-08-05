@@ -3,26 +3,48 @@ import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import BlogPostMeta from "../components/blog/BlogPostMeta.astro";
+import { Icon } from 'astro-icon/components'
 
 const { frontmatter } = Astro.props;
+
+const { title, description, pubDate, image, tags } = frontmatter;
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
-		<BaseHead title={frontmatter.title} description={frontmatter.description} />
+		<BaseHead title={title} description={description} />
 	</head>
 	<body>
 		<Header />
 		<main>
-      <a href="/blog">← Index</a>
-      <BlogPostMeta pubDate={frontmatter.pubDate} />
 
-      <hr class="inline-blog-post-divider" />
+      <h1 class="blog-post-heading">{title}</h1>
 
-      <h2>{frontmatter.title}</h2>
+      <BlogPostMeta pubDate={pubDate} />
+
+      <div class="blog-post-tags-wrapper">
+        <div class="blog-post-tags">
+          {tags && tags.map(tag => (
+            <span class="blog-post-tag" key={tag}>#{tag}</span>
+          ))}
+        </div>
+      </div>
+
       <slot />
-		</main>
+
+      <div class="blog-post-footer">
+        <hr />
+
+        <a href="/blog">
+          <span class="button-text-and-icon icon-left">
+            <Icon name="chevrons-left" />
+            Blog Index
+          </span>
+        </a>
+      </div>
+
+    </main>
 		<Footer />
 	</body>
 </html>

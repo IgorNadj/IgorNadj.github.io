@@ -3,6 +3,7 @@ title: 'Visual Processing Test'
 layout: ../../layouts/BlogPostLayout.astro
 pubDate: 2018-11-04
 image: '/blog-assets/visual-processing-test.jpg'
+#tags: ['project']
 ---
 
 Visual Processing Test is an online study which tests the user's top-down visual processing ability.

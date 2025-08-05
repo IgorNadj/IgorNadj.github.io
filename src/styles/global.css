@@ -196,3 +196,51 @@ em2 { font-weight: 400 }
   padding: 0.5rem 1rem;
   border-radius: 4px;
 }
+
+
+.button-text-and-icon {
+  display: inline-flex;
+  align-items: center;
+
+  &.icon-left {
+    svg {
+      margin-right: 0.5rem;
+    }
+  }
+
+  &.right {
+    svg {
+      margin-left: 0.5rem;
+    }
+  }
+
+  svg {
+    margin-bottom: -0.1rem;
+  }
+}
+
+
+.blog-post-heading {
+  margin-bottom: 1rem;
+}
+
+.blog-post-footer {
+  margin: 2rem 0;
+
+  hr {
+    margin-bottom: 1rem;
+  }
+}
+
+.blog-post-tags-wrapper {
+  display: block;
+}
+
+.blog-post-tags {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.blog-post-tag {
+  color: var(--accent);
+}

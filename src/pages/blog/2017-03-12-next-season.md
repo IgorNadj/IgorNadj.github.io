@@ -3,6 +3,7 @@ title: 'Next Season'
 layout: ../../layouts/BlogPostLayout.astro
 pubDate: 2017-03-12
 image: '/blog-assets/nextseason.jpg'
+#tags: ['project', 'parser-expression-grammar']
 ---
 
 Next Season tells you when your favourite shows are returning.

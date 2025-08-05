@@ -20,7 +20,7 @@ const { text: minutesReadingText } = readingTime(post.body);
 <article class="inline-blog-post">
   <div class="inline-blog-post-header">
     <h1>
-      {post.data.title}
+      <a href={`/blog/${post.id}`}>{post.data.title}</a>
     </h1>
     <BlogPostMeta pubDate={post.data.pubDate} minutesReadingText={minutesReadingText} />
   </div>
@@ -31,21 +31,28 @@ const { text: minutesReadingText } = readingTime(post.body);
     </div>
   </div>
 
-  <div class="inline-blog-post-read-more">
-    <Button href={`/blog/${post.id}`}>
-      <span class="button-contents">
+
+
+  <div class="inline-blog-post-footer">
+    <div class="blog-post-tags-wrapper">
+      <div class="blog-post-tags">
+        {post.data.tags && post.data.tags.map(tag => (
+          <span class="blog-post-tag" key={tag}>#{tag}</span>
+        ))}
+      </div>
+    </div>
+
+    <div class="inline-blog-post-read-more">
+      <Button href={`/blog/${post.id}`}>
+      <span class="button-text-and-icon icon-right">
         Read
         <Icon name="chevrons-right" />
       </span>
-    </Button>
-  </div>
-
-  <div class="inline-blog-post-footer">
-    <div class="inline-blog-post-tags">
-      {post.data.tags && post.data.tags.map(tag => (
-        <span class="inline-blog-post-tag" key={tag}>#{tag}</span>
-      ))}
+      </Button>
     </div>
   </div>
+
+
+
   <hr class="inline-blog-post-divider" />
 </article>
