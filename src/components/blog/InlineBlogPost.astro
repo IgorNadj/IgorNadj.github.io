@@ -2,6 +2,8 @@
 import { render } from 'astro:content';
 import BlogPostMeta from './BlogPostMeta.astro';
 import Button from '../Button.astro';
+import readingTime from 'reading-time';
+import { Icon } from 'astro-icon/components'
 
 interface Props {
   post: any;
@@ -10,16 +12,17 @@ interface Props {
 const { post } = Astro.props;
 
 const { Content } = await render(post);
+
+const { text: minutesReadingText } = readingTime(post.body);
 ---
 
 
 <article class="inline-blog-post">
   <div class="inline-blog-post-header">
-    <BlogPostMeta pubDate={post.data.pubDate} />
-
     <h1>
       {post.data.title}
     </h1>
+    <BlogPostMeta pubDate={post.data.pubDate} minutesReadingText={minutesReadingText} />
   </div>
 
   <div class="inline-blog-post-content-fader">
@@ -29,7 +32,12 @@ const { Content } = await render(post);
   </div>
 
   <div class="inline-blog-post-read-more">
-    <Button href={`/blog/${post.id}`}>Read more &rarr;</Button>
+    <Button href={`/blog/${post.id}`}>
+      <span class="button-contents">
+        Read
+        <Icon name="chevrons-right" />
+      </span>
+    </Button>
   </div>
 
   <div class="inline-blog-post-footer">

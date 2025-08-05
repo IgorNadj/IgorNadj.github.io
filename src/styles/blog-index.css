@@ -6,7 +6,7 @@
 }
 
 .inline-blog-post-header {
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
 }
 
 .inline-blog-post-header h1 {
@@ -15,8 +15,9 @@
 }
 
 .blog-post-meta {
-  color: #666;
-  font-size: 0.8rem;
+  /*color: #666;*/
+  /*font-size: 0.8rem;*/
+  margin-top: 1rem;
 }
 
 .inline-blog-post-content {
@@ -51,7 +52,16 @@
 
 .inline-blog-post-read-more {
   margin: 1rem 0;
-  text-align: center;
+
+  .button-contents {
+    display: inline-flex;
+    align-items: center;
+
+    svg {
+      margin-left: 0.5rem;
+      margin-bottom: -0.1rem;
+    }
+  }
 }
 
 .inline-blog-post-divider {

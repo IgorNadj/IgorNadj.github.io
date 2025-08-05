@@ -2,7 +2,6 @@
 title: 'Next Season'
 layout: ../../layouts/BlogPostLayout.astro
 pubDate: 2017-03-12
-description: 'Blog post about the Next Season project.'
 image: '/blog-assets/nextseason.jpg'
 ---
 

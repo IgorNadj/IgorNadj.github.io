@@ -2,7 +2,6 @@
 title: 'Visual Processing Test'
 layout: ../../layouts/BlogPostLayout.astro
 pubDate: 2018-11-04
-description: 'Blog post about the Visual Processing Test project.'
 image: '/blog-assets/visual-processing-test.jpg'
 ---
 

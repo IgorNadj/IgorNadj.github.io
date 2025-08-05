@@ -4,11 +4,14 @@ import { getEntry, render } from 'astro:content';
 
 interface Props {
   pubDate: any;
+  minutesReadingText: string;
 }
 
-const { pubDate } = Astro.props;
+const { pubDate, minutesReadingText } = Astro.props;
 ---
 
 <div class="blog-post-meta">
-  {format(pubDate, 'd MMM yyyy')}
+  <span>{format(pubDate, 'd MMM yyyy')}</span>
+  -
+  <span>{ minutesReadingText }</span>
 </div>
