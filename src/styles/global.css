@@ -244,3 +244,7 @@ em2 { font-weight: 400 }
 .blog-post-tag {
   color: var(--accent);
 }
+
+.astro-code {
+  font-size: 0.8rem;
+}
