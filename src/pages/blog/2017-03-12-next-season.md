@@ -13,7 +13,7 @@ Built with [Parser Expression Grammar](https://en.wikipedia.org/wiki/Parsing_exp
 <div class="project-card">
   <img src="/blog-assets/nextseason.jpg" />
   <div>
-    <a href="http://nextseason.dev.igornadj.io">
+    <a href="https://nextseason.dev.igornadj.io">
       Visit →
     </a>
   </div>

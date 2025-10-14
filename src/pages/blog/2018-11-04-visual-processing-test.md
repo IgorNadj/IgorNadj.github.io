@@ -11,7 +11,7 @@ Visual Processing Test is an online study which tests the user's top-down visual
 <div class="project-card">
   <img src="/blog-assets/visual-processing-test.jpg" />
   <div>
-    <a href="http://visual-processing-test.dev.igornadj.io">
+    <a href="https://visual-processing-test.dev.igornadj.io">
       Visit →
     </a>
   </div>
